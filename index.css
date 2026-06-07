@@ -1021,11 +1021,6 @@ justify-content: flex-start;
     text-align: center;
     color: white;
     line-height: 1.7;
-}
-
-.card{
-  
-}
 
 .credit-logo{
     padding-top: ;
@@ -1207,7 +1202,7 @@ justify-content: flex-start;
     background: linear-gradient(to right, #02040f, #000814);
 }
 
-.card {
+.thank-card {
     background: linear-gradient(to right, #02040f, #000814);
     padding: 40px 30px;
     border-radius: 16px;
