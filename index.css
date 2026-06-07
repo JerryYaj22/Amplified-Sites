@@ -1286,6 +1286,13 @@ justify-content: flex-start;
     margin-bottom: 20px;
 }
 
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(109, 2, 2, 0.05);
+}
+    
 .order-num{
     color: white;
 }
