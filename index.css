@@ -1349,12 +1349,6 @@ justify-content: flex-start;
     gap: 25px;
 }
 
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 5px 20px rgba(109, 2, 2, 0.05);
-}
 
 .progress-content {
     display: flex;
