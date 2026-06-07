@@ -1202,13 +1202,7 @@ justify-content: flex-start;
     background: linear-gradient(to right, #02040f, #000814);
 }
 
-.card {
-    background: linear-gradient(to right, #02040f, #000814);
-    padding: 40px 30px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    animation: fadeIn 0.6s ease-in-out;
-}
+
 
 .check {
     font-size: 50px;
