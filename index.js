@@ -179,5 +179,18 @@ supabaseClient
         const project = await fetchProject(currentOrderId);
         if (project) renderProject(project);
     }
+      const channel = supabase
+  .channel('projects-changes')
+  .on(
+    'postgres_changes',
+    {
+      event: '*',
+      schema: 'public',
+      table: 'projects'
+    },
+    (payload) => {
+      console.log('Change detected:', payload);
+      fetchProject(); // re-run your UI update
+    }
   })
   .subscribe();
