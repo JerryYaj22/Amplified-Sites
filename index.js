@@ -103,7 +103,9 @@ const res = await fetch(
 function renderProject(project) {
     console.log("progress:", project.progress);
     document.getElementById("dashboard").style.display = "block";
-
+    const stages = document.querySelectorAll(".stage");
+    const nums = document.querySelectorAll(".num");
+    const plans = document.querySelectorAll(".plan");
     document.getElementById("projectType").innerText = project.package;
     document.getElementById("orderNumber").innerText = project.order_id;
     document.getElementById("projectStatus").innerText = "● " + project.status;
@@ -194,3 +196,42 @@ supabaseClient
     }
   })
   .subscribe();
+const stageMap = {
+  "Planning": 0,
+  "Design": 1,
+  "Development": 2,
+  "Testing": 3,
+  "Revisions": 4,
+  "Complete": 5
+};
+
+const currentIndex = stageMap[project.stage];
+stages.forEach((stage, index) => {
+  stage.classList.remove("active", "current");
+
+  if (index < currentIndex) {
+    stage.classList.add("active");
+  } else if (index === currentIndex) {
+    stage.classList.add("current");
+  }
+});
+
+nums.forEach((num, index) => {
+  num.classList.remove("active", "current");
+
+  if (index < currentIndex) {
+    num.classList.add("active");
+  } else if (index === currentIndex) {
+    num.classList.add("current");
+  }
+});
+
+plans.forEach((plan, index) => {
+  plan.classList.remove("active", "current");
+
+  if (index < currentIndex) {
+    plan.classList.add("active");
+  } else if (index === currentIndex) {
+    plan.classList.add("current");
+  }
+});
