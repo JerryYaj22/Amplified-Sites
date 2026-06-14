@@ -50,140 +50,91 @@ const projects = {
 
 };
 
-const button = document.getElementById("trackBtn");
-const orderInput = document.getElementById("orderInput");
+const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA";
 
-function trackProject() {
+let currentOrderId = null;
 
-    const orderNumber = orderInput.value
-        .trim()
-        .replace(/\s+/g, "-")
-        .toUpperCase();
+// FETCH FROM SUPABASE
+async function fetchProject(orderId) {
+    const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}`,
+        {
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
+            }
+        }
+    );
 
-    const project = projects[orderNumber];
+    const data = await res.json();
 
-    if (!project) {
-        alert("Order number not found.");
-        return;
+    if (!data.length) {
+        alert("No project found");
+        return null;
     }
 
-    // ✅ SHOW DASHBOARD (IMPORTANT FIX)
-    document.getElementById("dashboard").style.display = "block";
-
-    // Project Info
-    document.getElementById("projectType").textContent =
-        project.projectType;
-
-    document.getElementById("orderNumber").textContent =
-        orderNumber;
-
-    document.getElementById("projectStatus").textContent =
-        "● " + project.status;
-
-    document.getElementById("progressPercent").textContent =
-        project.progress + "%";
-
-    document.getElementById("currentStage").textContent =
-        project.stage;
-
-    // Circle Progress
-    const circleProgress =
-        document.querySelector(".circle-progress");
-
-    circleProgress.style.background =
-        `conic-gradient(
-            #2563eb 0% ${project.progress}%,
-            #03050848 ${project.progress}% 100%
-        )`;
-
-    // Project Stages
-    const stages = document.querySelectorAll(".stage");
-
-    stages.forEach((stage, index) => {
-
-        stage.classList.remove("active", "current");
-
-        if (index + 1 < project.stageNumber) {
-            stage.classList.add("active");
-        }
-
-        else if (index + 1 === project.stageNumber) {
-            stage.classList.add("current");
-        }
-
-    });
-
-    // Stage Numbers
-    const nums = document.querySelectorAll(".num");
-
-    nums.forEach((num, index) => {
-
-        num.classList.remove("active", "current");
-
-        if (index + 1 < project.stageNumber) {
-            num.classList.add("active");
-        }
-
-        else if (index + 1 === project.stageNumber) {
-            num.classList.add("current");
-        }
-
-    });
-
-    // Stage Labels
-    const plans = document.querySelectorAll(".plan");
-
-    plans.forEach((plan, index) => {
-
-        plan.classList.remove("active", "current");
-
-        if (index + 1 < project.stageNumber) {
-            plan.classList.add("active");
-        }
-
-        else if (index + 1 === project.stageNumber) {
-            plan.classList.add("current");
-        }
-
-    });
-
-    // Details
-    document.getElementById("completionDate").textContent =
-        project.completionDate;
-
-    document.getElementById("timeRemaining").textContent =
-        project.timeRemaining;
-
-    document.getElementById("projectManager").textContent =
-        project.manager;
-
-    // Updates
-    const updatesList =
-        document.getElementById("updatesList");
-
-    updatesList.innerHTML = "";
-
-    project.updates.forEach(update => {
-
-        const p = document.createElement("p");
-
-        p.innerHTML =
-            `<i class="fa-solid fa-check"></i> ${update}`;
-
-        updatesList.appendChild(p);
-
-    });
-
+    return data[0];
 }
 
-// Button Click
-button.addEventListener("click", trackProject);
+// UPDATE UI
+function renderProject(project) {
 
-// Enter Key
-orderInput.addEventListener("keydown", function(event) {
+    document.getElementById("dashboard").style.display = "block";
 
-    if (event.key === "Enter") {
-        trackProject();
-    }
+    document.getElementById("projectType").innerText = project.package;
+    document.getElementById("orderNumber").innerText = project.order_id;
+    document.getElementById("projectStatus").innerText = "● " + project.status;
+    document.getElementById("progressPercent").innerText = project.progress + "%";
+    document.getElementById("currentStage").innerText = project.status;
 
+    document.getElementById("circleProgress").style.background =
+        `conic-gradient(#2563eb ${project.progress}%, #333 ${project.progress}%)`;
+
+    document.getElementById("completionDate").innerText = project.completion_date || "";
+    document.getElementById("timeRemaining").innerText = project.time_remaining || "";
+    document.getElementById("projectManager").innerText = project.manager || "";
+
+    const updatesList = document.getElementById("updatesList");
+    updatesList.innerHTML = "";
+
+    (project.updates || []).forEach(update => {
+        const p = document.createElement("p");
+        p.innerHTML = `<i class="fa-solid fa-check"></i> ${update}`;
+        updatesList.appendChild(p);
+    });
+}
+
+// BUTTON CLICK
+document.getElementById("trackBtn").addEventListener("click", async () => {
+
+    const orderId = document.getElementById("orderInput").value.trim();
+
+    currentOrderId = orderId;
+
+    const project = await fetchProject(orderId);
+
+    if (project) renderProject(project);
 });
+
+
+// 🔥 REAL-TIME UPDATE (THIS IS WHAT YOU WERE MISSING)
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+supabaseClient
+  .channel('projects')
+  .on('postgres_changes', {
+    event: '*',
+    schema: 'public',
+    table: 'projects'
+  }, async (payload) => {
+
+    console.log("Database changed:", payload);
+
+    // only refresh if user is tracking a project
+    if (currentOrderId) {
+        const project = await fetchProject(currentOrderId);
+        if (project) renderProject(project);
+    }
+  })
+  .subscribe();
