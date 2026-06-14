@@ -1515,6 +1515,10 @@ justify-content: flex-start;
     color: #2563eb;
     font-weight: 600;
 }
+
+#dashboard {
+    display: none;
+}
 /* END OF TRACK PROGRESS PAGE */
 
 /* FOOTER QUESTIONS */
