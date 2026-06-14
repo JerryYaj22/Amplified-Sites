@@ -63,25 +63,22 @@ async function fetchProject(orderId) {
 
     const cleanedOrderId = orderId.trim().toUpperCase().replace(/\s+/g, "");
 
-       const query = encodeURIComponent(`*${orderId}*`);
-
-const res = await fetch(
-  `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.*${cleanedOrderId}*`,
-  {
-    headers: {
-      apikey: SUPABASE_KEY,
-      Authorization: `Bearer ${SUPABASE_KEY}`
-    }
-  }
-);
+    const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.*${cleanedOrderId}*`,
+        {
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
+            }
+        }
+    );
 
     const data = await res.json();
 
-    console.log("Supabase response:", data); // DEBUG (important)
+    console.log("Supabase response:", data);
 
     if (!data.length) {
-        console.log("No match found for:", cleanedOrderId);
-        alert("No project found");
+        console.log("No match found:", cleanedOrderId);
         return null;
     }
 
@@ -101,26 +98,28 @@ const res = await fetch(
    RENDER UI
 ========================= */
 function renderProject(project) {
+
     console.log("progress:", project.progress);
+
     document.getElementById("dashboard").style.display = "block";
-    const stages = document.querySelectorAll(".stage");
-    const nums = document.querySelectorAll(".num");
-    const plans = document.querySelectorAll(".plan");
+
     document.getElementById("projectType").innerText = project.package;
     document.getElementById("orderNumber").innerText = project.order_id;
     document.getElementById("projectStatus").innerText = "● " + project.status;
     document.getElementById("progressPercent").innerText = project.progress + "%";
     document.getElementById("currentStage").innerText = project.stage;
 
-   const progress = Number(project.progress) || 0;
+    const progress = Number(project.progress) || 0;
 
-circleProgress.style.background =
+    const circleProgress = document.getElementById("circleProgress");
+
+    circleProgress.style.background =
         `conic-gradient(
-            #2563eb 0% ${project.progress}%,
-            #03050848 ${project.progress}% 100%
+            #2563eb 0% ${progress}%,
+            #03050848 ${progress}% 100%
         )`;
 
-    // ✅ FIXED FIELD NAMES
+    // FIXED FIELD NAMES
     document.getElementById("completionDate").innerText =
         project.completionDate || "";
 
@@ -130,7 +129,7 @@ circleProgress.style.background =
     document.getElementById("projectManager").innerText =
         project.manager || "";
 
-    // Updates
+    // UPDATES
     const updatesList = document.getElementById("updatesList");
     updatesList.innerHTML = "";
 
@@ -138,6 +137,43 @@ circleProgress.style.background =
         const p = document.createElement("p");
         p.innerHTML = `<i class="fa-solid fa-check"></i> ${update}`;
         updatesList.appendChild(p);
+    });
+
+    // =========================
+    // STAGE SYSTEM (FIXED)
+    // =========================
+
+    const stageMap = {
+        "Planning": 0,
+        "Design": 1,
+        "Development": 2,
+        "Testing": 3,
+        "Revisions": 4,
+        "Complete": 5
+    };
+
+    const currentIndex = stageMap[project.stage] ?? 0;
+
+    const stages = document.querySelectorAll(".stage");
+    const nums = document.querySelectorAll(".num");
+    const plans = document.querySelectorAll(".plan");
+
+    stages.forEach((el, i) => {
+        el.classList.remove("active", "current");
+        if (i < currentIndex) el.classList.add("active");
+        if (i === currentIndex) el.classList.add("current");
+    });
+
+    nums.forEach((el, i) => {
+        el.classList.remove("active", "current");
+        if (i < currentIndex) el.classList.add("active");
+        if (i === currentIndex) el.classList.add("current");
+    });
+
+    plans.forEach((el, i) => {
+        el.classList.remove("active", "current");
+        if (i < currentIndex) el.classList.add("active");
+        if (i === currentIndex) el.classList.add("current");
     });
 }
 
@@ -169,20 +205,6 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 supabaseClient
   .channel('projects')
-  .on('postgres_changes', {
-    event: '*',
-    schema: 'public',
-    table: 'projects'
-  }, async (payload) => {
-
-    console.log("Database changed:", payload);
-
-    if (currentOrderId) {
-        const project = await fetchProject(currentOrderId);
-        if (project) renderProject(project);
-    }
-      const channel = supabase
-  .channel('projects-changes')
   .on(
     'postgres_changes',
     {
@@ -190,48 +212,16 @@ supabaseClient
       schema: 'public',
       table: 'projects'
     },
-    (payload) => {
-      console.log('Change detected:', payload);
-      fetchProject(); // re-run your UI update
+    async () => {
+
+      console.log("Database changed");
+
+      if (currentOrderId) {
+        const project = await fetchProject(currentOrderId);
+        if (project) renderProject(project);
+      }
+
     }
-  })
+  )
   .subscribe();
-const stageMap = {
-  "Planning": 0,
-  "Design": 1,
-  "Development": 2,
-  "Testing": 3,
-  "Revisions": 4,
-  "Complete": 5
-};
 
-const currentIndex = stageMap[project.stage];
-stages.forEach((stage, index) => {
-  stage.classList.remove("active", "current");
-
-  if (index < currentIndex) {
-    stage.classList.add("active");
-  } else if (index === currentIndex) {
-    stage.classList.add("current");
-  }
-});
-
-nums.forEach((num, index) => {
-  num.classList.remove("active", "current");
-
-  if (index < currentIndex) {
-    num.classList.add("active");
-  } else if (index === currentIndex) {
-    num.classList.add("current");
-  }
-});
-
-plans.forEach((plan, index) => {
-  plan.classList.remove("active", "current");
-
-  if (index < currentIndex) {
-    plan.classList.add("active");
-  } else if (index === currentIndex) {
-    plan.classList.add("current");
-  }
-});
