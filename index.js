@@ -55,10 +55,13 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 let currentOrderId = null;
 
-// FETCH FROM SUPABASE
+/* =========================
+   FETCH PROJECT FROM SUPABASE
+========================= */
 async function fetchProject(orderId) {
+
     const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}`,
+        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${encodeURIComponent(orderId)}`,
         {
             headers: {
                 apikey: SUPABASE_KEY,
@@ -67,17 +70,23 @@ async function fetchProject(orderId) {
         }
     );
 
+    if (!res.ok) {
+        console.error("Supabase error:", await res.text());
+        return null;
+    }
+
     const data = await res.json();
 
     if (!data.length) {
-        alert("No project found");
         return null;
     }
 
     return data[0];
 }
 
-// UPDATE UI
+/* =========================
+   RENDER UI
+========================= */
 function renderProject(project) {
 
     document.getElementById("dashboard").style.display = "block";
@@ -91,10 +100,17 @@ function renderProject(project) {
     document.getElementById("circleProgress").style.background =
         `conic-gradient(#2563eb ${project.progress}%, #333 ${project.progress}%)`;
 
-    document.getElementById("completionDate").innerText = project.completion_date || "";
-    document.getElementById("timeRemaining").innerText = project.time_remaining || "";
-    document.getElementById("projectManager").innerText = project.manager || "";
+    // ✅ FIXED FIELD NAMES
+    document.getElementById("completionDate").innerText =
+        project.completionDate || "";
 
+    document.getElementById("timeRemaining").innerText =
+        project.timeRemaining || "";
+
+    document.getElementById("projectManager").innerText =
+        project.manager || "";
+
+    // Updates
     const updatesList = document.getElementById("updatesList");
     updatesList.innerHTML = "";
 
@@ -105,23 +121,30 @@ function renderProject(project) {
     });
 }
 
-// BUTTON CLICK
+/* =========================
+   BUTTON CLICK
+========================= */
 document.getElementById("trackBtn").addEventListener("click", async () => {
 
-   const orderId = document.getElementById("orderInput").value
-    .trim()
-    .toUpperCase()
-    .replace(/\s+/g, "");
+    const orderId = document.getElementById("orderInput").value
+        .trim()
+        .toUpperCase(); // ✅ DO NOT remove spaces/dashes
 
     currentOrderId = orderId;
 
     const project = await fetchProject(orderId);
 
-    if (project) renderProject(project);
+    if (!project) {
+        alert("Order not found");
+        return;
+    }
+
+    renderProject(project);
 });
 
-
-// 🔥 REAL-TIME UPDATE (THIS IS WHAT YOU WERE MISSING)
+/* =========================
+   REALTIME UPDATES
+========================= */
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 supabaseClient
@@ -134,7 +157,6 @@ supabaseClient
 
     console.log("Database changed:", payload);
 
-    // only refresh if user is tracking a project
     if (currentOrderId) {
         const project = await fetchProject(currentOrderId);
         if (project) renderProject(project);
