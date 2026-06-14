@@ -108,7 +108,7 @@ function renderProject(project) {
     document.getElementById("orderNumber").innerText = project.order_id;
     document.getElementById("projectStatus").innerText = "● " + project.status;
     document.getElementById("progressPercent").innerText = project.progress + "%";
-    document.getElementById("currentStage").innerText = project.status;
+    document.getElementById("currentStage").innerText = project.stage;
 
    const progress = Number(project.progress) || 0;
 
