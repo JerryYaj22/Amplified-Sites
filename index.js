@@ -57,6 +57,7 @@ function trackProject() {
 
     const orderNumber = orderInput.value
         .trim()
+        .replace(/\s+/g, "-")
         .toUpperCase();
 
     const project = projects[orderNumber];
@@ -65,6 +66,9 @@ function trackProject() {
         alert("Order number not found.");
         return;
     }
+
+    // ✅ SHOW DASHBOARD (IMPORTANT FIX)
+    document.getElementById("dashboard").style.display = "block";
 
     // Project Info
     document.getElementById("projectType").textContent =
