@@ -110,7 +110,7 @@ function renderProject(project) {
     document.getElementById("currentStage").innerText = project.status;
 
     document.getElementById("circleProgress").style.background =
-        `conic-gradient(#2563eb ${project.progress}%, #333 ${project.progress}%)`;
+        `conic-gradient(#2563eb ${project.progress}%, #03050848 ${project.progress}%)`;
 
     // ✅ FIXED FIELD NAMES
     document.getElementById("completionDate").innerText =
