@@ -100,7 +100,7 @@ async function fetchProject(orderId) {
    RENDER UI
 ========================= */
 function renderProject(project) {
-
+    console.log("progress:", project.progress);
     document.getElementById("dashboard").style.display = "block";
 
     document.getElementById("projectType").innerText = project.package;
