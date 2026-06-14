@@ -1425,8 +1425,6 @@ justify-content: flex-start;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-color: #2563eb;
-    color: #2563eb;
 }
 
 .stage.active {
