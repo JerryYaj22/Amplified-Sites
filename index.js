@@ -63,7 +63,6 @@ async function fetchProject(orderId) {
 
     const cleanedOrderId = orderId.trim().toUpperCase().replace(/\s+/g, "");
 
-    const res = await fetch(
        const res = await fetch(
   `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.${orderId}`,
   {
