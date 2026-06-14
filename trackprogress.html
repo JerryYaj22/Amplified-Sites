@@ -168,120 +168,79 @@
          <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
          <div class="copy-right">Designed by Amplified Sites</div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<!-- Supabase Library -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-/* ==========================================
-   SUPABASE CONFIG
-========================================== */
-const SUPABASE_URL =
-    "https://obnpotxehcktfdcseocz.supabase.co";
-const SUPABASE_KEY =
-    "YOUR_SUPABASE_ANON_KEY";
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-/* ==========================================
-   TRACK PROJECT
-========================================== */
+const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA"; // (recommended: move key server-side later)
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// TRACK PROJECT FUNCTION
 async function trackProject() {
-    const orderId =
-        document.getElementById("orderInput").value.trim().toUpperCase();
-    if (!orderId) {
-        alert("Please enter an Order ID");
+    const orderId = document.getElementById("orderInput").value.trim();
+
+    const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}`,
+        {
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
+            }
+        }
+    );
+
+    const data = await res.json();
+
+    console.log("DATA:", data);
+
+    if (!data.length) {
+        alert("No project found");
         return;
     }
-    try {
-        const res = await fetch(
-            `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}`,
-            {
-                headers: {
-                    apikey: SUPABASE_KEY,
-                    Authorization: `Bearer ${SUPABASE_KEY}`
-                    }
-            }
-        );
-        const data = await res.json();
-        console.log("DATA:", data);
-        if (!data.length) {
-            alert("No project found");
-            return;
-            }
-        const project = data[0];
-        updateDashboard(project);
-    } catch (error) {
-        console.error("Error loading project:", error);
-        alert("Error loading project");
-        }
-}
-/* ==========================================
-   UPDATE DASHBOARD
-========================================== */
-function updateDashboard(project) {
+
+    const project = data[0];
+
     document.getElementById("dashboard").style.display = "block";
-    document.getElementById("projectType").innerText =
-        project.package;
-    document.getElementById("orderNumber").innerText =
-        project.order_id;
-    document.getElementById("projectStatus").innerText =
-        "● " + project.status;
-    document.getElementById("progressPercent").innerText =
-        project.progress + "%";
-    document.getElementById("currentStage").innerText =
-        project.stage;
-    console.log("Progress:", project.progress);
+
+    document.getElementById("projectType").innerText = project.package;
+    document.getElementById("orderNumber").innerText = project.order_id;
+    document.getElementById("projectStatus").innerText = "● " + project.status;
+    document.getElementById("progressPercent").innerText = project.progress + "%";
+    document.getElementById("currentStage").innerText = project.stage;
+
     document.getElementById("circleProgress").style.background =
-        `conic-gradient(
-            #2563eb ${project.progress}%,
-            #03050848 ${project.progress}%
-            )`;
+        `conic-gradient(#2563eb ${project.progress}%, #03050848 ${project.progress}%)`;
 }
-/* ==========================================
-   BUTTON CLICK
-========================================== */
-document.getElementById("trackBtn").addEventListener(
-    "click",
-    trackProject
-);
-/* ==========================================
-   ENTER KEY SUPPORT
-========================================== */
-document.getElementById("orderInput").addEventListener(
-    "keydown",
-    function (event) {
-        if (event.key === "Enter") {
-            trackProject();
-            }
-        }
-);
-/* ==========================================
-   REAL-TIME SUPABASE UPDATES
-========================================== */
+
+// BUTTON CLICK
+document.getElementById("trackBtn").addEventListener("click", trackProject);
+
+// ENTER KEY
+document.getElementById("orderInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        trackProject();
+    }
+});
+
+// REAL-TIME LISTENER (PUT THIS HERE — OUTSIDE EVERYTHING)
 supabaseClient
-    .channel("projects")
-    .on(
-        "postgres_changes",
-        {
-            event: "*",
-            schema: "public",
-            table: "projects"
-        },
-        payload => {
-            console.log("Change received:", payload);
-            const orderId =
-                document.getElementById("orderInput")
-                .value
-                .trim()
-                .toUpperCase();
-            if (orderId) {
-                trackProject();
-                }
-            }
-    )
+    .channel('projects')
+    .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'projects'
+    }, payload => {
+        console.log("Change received:", payload);
+
+        // refresh current dashboard if user already searched
+        const orderId = document.getElementById("orderInput").value.trim();
+        if (orderId) {
+            trackProject();
+        }
+    })
     .subscribe();
+
 </script>
 </body>
 </html>
