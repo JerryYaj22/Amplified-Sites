@@ -109,8 +109,13 @@ function renderProject(project) {
     document.getElementById("progressPercent").innerText = project.progress + "%";
     document.getElementById("currentStage").innerText = project.status;
 
-    document.getElementById("circleProgress").style.background =
-        `conic-gradient(#2563eb ${project.progress}%, #03050848 ${project.progress}%)`;
+   const progress = Number(project.progress) || 0;
+
+document.getElementById("circleProgress").style.background =
+    `conic-gradient(
+        #2563eb 0% ${progress}%,
+        #03050848 ${progress}% 100%
+    )`;
 
     // ✅ FIXED FIELD NAMES
     document.getElementById("completionDate").innerText =
