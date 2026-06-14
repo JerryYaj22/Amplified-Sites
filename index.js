@@ -108,7 +108,10 @@ function renderProject(project) {
 // BUTTON CLICK
 document.getElementById("trackBtn").addEventListener("click", async () => {
 
-    const orderId = document.getElementById("orderInput").value.trim();
+   const orderId = document.getElementById("orderInput").value
+    .trim()
+    .toUpperCase()
+    .replace(/\s+/g, "");
 
     currentOrderId = orderId;
 
