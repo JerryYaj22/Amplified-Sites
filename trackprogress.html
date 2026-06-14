@@ -168,5 +168,43 @@
          <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
          <div class="copy-right">Designed by Amplified Sites</div>
     </footer>
+    <script>
+const SUPABASE_URL = "YOUR_SUPABASE_URL";
+const SUPABASE_KEY = "YOUR_ANON_KEY";
+
+document.getElementById("trackBtn").addEventListener("click", async () => {
+    const orderId = document.getElementById("orderInput").value;
+
+    const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}`,
+        {
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
+            }
+        }
+    );
+
+    const data = await res.json();
+
+    if (!data.length) {
+        alert("No project found");
+        return;
+    }
+
+    const project = data[0];
+
+    // 🔹 Update your UI
+    document.getElementById("projectType").innerText = project.package;
+    document.getElementById("orderNumber").innerText = project.order_id;
+    document.getElementById("projectStatus").innerText = project.status;
+    document.getElementById("progressPercent").innerText = project.progress + "%";
+    document.getElementById("currentStage").innerText = project.status;
+
+    // optional: update circle progress
+    document.getElementById("circleProgress").style.background =
+        `conic-gradient(#2563eb ${project.progress}%, #333 ${project.progress}%)`;
+});
+</script>
 </body>
 </html>
