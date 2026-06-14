@@ -58,10 +58,13 @@ let currentOrderId = null;
 /* =========================
    FETCH PROJECT FROM SUPABASE
 ========================= */
+// FETCH FROM SUPABASE
 async function fetchProject(orderId) {
 
+    const cleanedOrderId = orderId.trim().toUpperCase().replace(/\s+/g, "");
+
     const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${encodeURIComponent(orderId)}`,
+        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${encodeURIComponent(cleanedOrderId)}`,
         {
             headers: {
                 apikey: SUPABASE_KEY,
@@ -70,10 +73,18 @@ async function fetchProject(orderId) {
         }
     );
 
-    if (!res.ok) {
-        console.error("Supabase error:", await res.text());
+    const data = await res.json();
+
+    console.log("Supabase response:", data); // DEBUG (important)
+
+    if (!data.length) {
+        console.log("No match found for:", cleanedOrderId);
+        alert("No project found");
         return null;
     }
+
+    return data[0];
+}
 
     const data = await res.json();
 
