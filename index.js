@@ -66,7 +66,7 @@ async function fetchProject(orderId) {
        const query = encodeURIComponent(`*${orderId}*`);
 
 const res = await fetch(
-  `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.${query}`,
+  `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.*${cleanedOrderId}*`,
   {
     headers: {
       apikey: SUPABASE_KEY,
