@@ -64,14 +64,15 @@ async function fetchProject(orderId) {
     const cleanedOrderId = orderId.trim().toUpperCase().replace(/\s+/g, "");
 
     const res = await fetch(
-        `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${encodeURIComponent(cleanedOrderId)}`,
-        {
-            headers: {
-                apikey: SUPABASE_KEY,
-                Authorization: `Bearer ${SUPABASE_KEY}`
-            }
-        }
-    );
+       const res = await fetch(
+  `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.${orderId}`,
+  {
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`
+    }
+  }
+);
 
     const data = await res.json();
 
