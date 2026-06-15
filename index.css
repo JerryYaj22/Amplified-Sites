@@ -1344,6 +1344,8 @@ justify-content: flex-start;
     border: 1px solid #ddd;
     padding: 12px 20px;
     border-radius: 50px;
+    color: #00b13b;
+    font-size: x-large;
 }
 
 .dashboard-grid {
