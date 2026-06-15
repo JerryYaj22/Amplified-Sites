@@ -58,7 +58,6 @@ let currentOrderId = null;
 /* =========================
    FETCH PROJECT FROM SUPABASE
 ========================= */
-// FETCH FROM SUPABASE
 async function fetchProject(orderId) {
 
     const cleanedOrderId = orderId.trim().toUpperCase().replace(/\s+/g, "");
@@ -79,15 +78,6 @@ async function fetchProject(orderId) {
 
     if (!data.length) {
         console.log("No match found:", cleanedOrderId);
-        return null;
-    }
-
-    return data[0];
-}
-
-    const data = await res.json();
-
-    if (!data.length) {
         return null;
     }
 
@@ -119,7 +109,6 @@ function renderProject(project) {
             #03050848 ${progress}% 100%
         )`;
 
-    // FIXED FIELD NAMES
     document.getElementById("completionDate").innerText =
         project.completionDate || "";
 
@@ -129,7 +118,6 @@ function renderProject(project) {
     document.getElementById("projectManager").innerText =
         project.manager || "";
 
-    // UPDATES
     const updatesList = document.getElementById("updatesList");
     updatesList.innerHTML = "";
 
@@ -138,10 +126,6 @@ function renderProject(project) {
         p.innerHTML = `<i class="fa-solid fa-check"></i> ${update}`;
         updatesList.appendChild(p);
     });
-
-    // =========================
-    // STAGE SYSTEM (FIXED)
-    // =========================
 
     const stageMap = {
         "Planning": 0,
@@ -184,7 +168,30 @@ document.getElementById("trackBtn").addEventListener("click", async () => {
 
     const orderId = document.getElementById("orderInput").value
         .trim()
-        .toUpperCase(); // ✅ DO NOT remove spaces/dashes
+        .toUpperCase();
+
+    currentOrderId = orderId;
+
+    const project = await fetchProject(orderId);
+
+    if (!project) {
+        alert("Order not found");
+        return;
+    }
+
+    renderProject(project);
+});
+
+/* =========================
+   ENTER KEY
+========================= */
+document.getElementById("orderInput").addEventListener("keydown", async (event) => {
+
+    if (event.key !== "Enter") return;
+
+    const orderId = document.getElementById("orderInput").value
+        .trim()
+        .toUpperCase();
 
     currentOrderId = orderId;
 
@@ -204,24 +211,26 @@ document.getElementById("trackBtn").addEventListener("click", async () => {
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 supabaseClient
-  .channel('projects')
-  .on(
-    'postgres_changes',
-    {
-      event: '*',
-      schema: 'public',
-      table: 'projects'
-    },
-    async () => {
+    .channel('projects')
+    .on(
+        'postgres_changes',
+        {
+            event: '*',
+            schema: 'public',
+            table: 'projects'
+        },
+        async () => {
 
-      console.log("Database changed");
+            console.log("Database changed");
 
-      if (currentOrderId) {
-        const project = await fetchProject(currentOrderId);
-        if (project) renderProject(project);
-      }
+            if (currentOrderId) {
+                const project = await fetchProject(currentOrderId);
 
-    }
-  )
-  .subscribe();
+                if (project) {
+                    renderProject(project);
+                }
+            }
 
+        }
+    )
+    .subscribe();
