@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="viewpackage.js"></script>
+    <title>Amplified Sites</title>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="ampsiteslogo.png" alt="ampsiteslogo"></a>
+                <h1>Amplified <span>Sites</span></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="trackprogress.html">Track Progress</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <a href="startjourney.html" class="quote-btn">Start Your Journey</a>
+        </nav>
+    </header>
+    <section class="payment-body">
+        <div class="payment-hero">
+            <h3><span>Ready to Bring Your Project to Life?</span></h3>
+            <p>If you're satisfied with your custom website concept and are ready to move forward. 
+                <br>Submit your non-refundable 50% deposit to secure your project.
+            </p> 
+        </div>
+    </section>
+    <section class="view-packages">
+        <div id="package" class="section">
+            <div class="package-hero">
+                <div class="package-select">
+                    <div class="landing-page">
+                        <h1><span class="hero-color">Landing Page</span></h1>
+                        <h1><span class="price"> $150</span></h1>
+                        <h1><span class="text-quote"> One goal. <br>Maximum impact.</span></h1>
+                        <h1><span class="upfront">50% Deposit</span></h1>
+                        <img src="">
+                        <h1><span class="package-text">WHAT'S INCLUDED</span></h1>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Up to 2 Custom Pages</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Clear Call-to-action</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Contact Form</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 3-5 Business days</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Fast delivery</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Website video tutorial</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 1 Revisonal round</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 30 Day website support</p>
+                    </div>
+                    <div class="best-for">
+                        <div class="best-text">
+                            <h3><i class="fa-solid fa-user"></i> BEST FOR</h3>
+                            <p>Promotions, events, product launches, and quick lead generation.</p>
+                        </div>
+                    </div>
+                    <div class="get-started">
+                        <a href="https://buy.stripe.com/14A6oz38v9GX6Qw0NKgYU04" class="package">Get Package</a>
+                    </div>              
+                </div>
+            </div>
+            <div class="package-hero">
+                <div class="package-select">
+                <div class="landing-page">
+                        <h1><span class="hero-color">Standard Website</span></h1>
+                        <h1><span class="price"> $350</span></h1>
+                        <h1><span class="text-quote"> Simple. professional <br>online presence.</span></h1>
+                        <h1><span class="upfront">50% Deposit</span></h1>
+                        <img src="">
+                        <h1><span class="package-text">WHAT'S INCLUDED</span></h1>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Up to 5 Custom Pages</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Professional Email Setup </p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Social media Integration</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Google Map Integration</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 5-10 Business days</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Website video tutorial</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 1 Revisonal round</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 30 Day website support</p>
+                    </div>
+                    <div class="best-for">
+                        <div class="best-text">
+                            <h3><i class="fa-solid fa-user"></i> BEST FOR</h3>
+                            <p>Small businesses or individuals who need a simple and effective site.</p>
+                        </div>
+                    </div>
+                    <div class="get-started">
+                        <a href="https://buy.stripe.com/fZu6oz4cz1ar2AgbsogYU01" class="package">Get Package</a>
+                    </div>     
+                </div>
+            </div>
+            <div class="package-hero">
+                <div class="package-select">
+                    <div class="landing-page">
+                        <h1><span class="hero-color">Business Website</span></h1>
+                        <h1><span class="price"> $650</span></h1>
+                        <h1><span class="text-quote"> Advanced design/features. <br>More content.</span></h1>
+                        <h1><span class="upfront">50% Deposit</span></h1>
+                        <img src="">
+                        <h1><span class="package-text">WHAT'S INCLUDED</span></h1>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Up to 10 custom pages</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Testimonial page</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Portfiolio page</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> More advanced Design</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Stripe payment</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 2-3 Weeks</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Website video tutorial</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 2 Revisonal rounds</p>
+                        <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 30 Day website support</p>
+                    </div>
+                    <div class="best-for">
+                        <div class="best-text">
+                            <h3><i class="fa-solid fa-user"></i> BEST FOR</h3>
+                            <p>Businesses that need a professional website to showcase their services.</p>
+                        </div>
+                    </div>
+                    <div class="get-started">
+                        <a href="https://buy.stripe.com/3cIbITdN97yP0s8fIEgYU00" class="package">Get Package</a>
+                    </div>     
+                </div>
+            </div>
+            <div class="package-hero">
+                <div class="package-select">
+                    <div class="landing-page">
+                            <h1><span class="hero-color">Premium Website</span></h1>
+                            <h1><span class="price"> $950</span></h1>
+                            <h1><span class="text-quote"> All in one Package. <br>Sell online. Grow online.</span></h1>
+                            <h1><span class="upfront">50% Deposit</span></h1>
+                            <h1><span class="package-text">WHAT'S INCLUDED</span></h1>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> All packages in one</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Up to 15 pages</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Product catalog</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Inventory management</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Shopping cart</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Ai Chatbox</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 4-6 Weeks</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Website video tutorial</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 3 Revisional rounds</p>
+                            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> 30 Day website support</p>
+                        </div>
+                        <div class="best-for">
+                            <div class="best-text">
+                                <h3><i class="fa-solid fa-user"></i> BEST FOR</h3>
+                                <p>Online stores ready to sell products and grow revenue.</p>
+                            </div>
+                        </div>
+                        <div class="get-started">
+                            <a href="https://buy.stripe.com/9B63cn6kH3izb6MaokgYU02" class="package">Get Package</a>
+                        </div>     
+                    </div>
+                </div>
+            </div>
+    <section class="add-on">
+        <div class="extra-add">
+            <h3>Extra Add Ons</h3>
+            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Additional features and custom add-ons are available to enhance your website. Pricing 
+                <br>varies depending on the type, complexity, and scope of the requested add-on.
+            </p>
+            <br>
+            <p><span class="small-icons"><i class="fa-solid fa-circle-check"></i></span> Every website includes 30 days of complimentary website support after launch. 
+                After the initial <br>30-day period, ongoing website support and maintenance is 
+                available for $50 per month, <br>which includes website updates, troubleshooting, 
+                and general assistance as needed.
+            </p>
+        </div>
+    </section>
+    <section id="steps-pay">
+        <div class="secure-grid">
+            <div class="secure-card">
+                <div class="secure-icon"><i class="fa-solid fa-lock"></i></div>
+                <div class="secure-text">
+                    <h3>Secure Payment</h3>
+                    <p>Your payment is processed securely through stripe.</p>
+                </div>
+            </div>
+            <div class="secure-card">
+                <div class="secure-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <div class="secure-text">
+                    <h3>50% Project Deposit</h3>
+                    <p>The intial deposit secures your spot and allows work to begin.</p>
+                </div>
+            </div>
+            <div class="secure-card">
+                <div class="secure-icon"><i class="fa-solid fa-square-check"></i></div>    
+                <div class="secure-text">
+                    <h3>Balance Due Upon Completion</h3>
+                    <p>The remaining balance is paid when your website is <br>complete and ready for launch.</p>
+                </div>
+            </div>
+            <div class="steps-card">
+                <div class="steps-icon"><span><i class="fa-solid fa-user-shield"></i></span></div>    
+                <div class="steps-text">
+                    <h3><span>No RIsk. No Pressure.</span></h3>
+                    <p>You ONLY pay if you like the concept and want to 
+                        <br>move forward with your project.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="find-order-card">
+            <div class="card-header">
+                <div class="icon-circle">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h2>Find Your Order</h2>
+            </div>
+            <p class="card-text">
+                Access your order details, view your remaining balance, and complete your payment securely
+            </p>
+            <form id="orderForm">
+                <label>Order Number</label>
+                <input
+                    type="text"
+                    id="paymentOrderNumber"
+                    placeholder="AS-1001"
+                    required
+                    >
+                <label>Email Address</label>
+                <input
+                    type="email"
+                    id="paymentEmail"
+                    placeholder="you@example.com"
+                    required
+                    >
+                <button type="submit">
+                    Find Order
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="security-note">
+                🔒 Your information is secure and will never be shared.
+            </div>
+        </div>
+    </section>
+    <section class="orderpay">
+        <div class="order-found-card" id="orderFoundCard">
+            <div class="order-found-header">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                    <h2>Order Found!</h2>
+                    <p>Here are your order details.</p>
+                </div>
+            </div>
+            <div class="order-top-info">
+                <div>
+                    <span>Order Number</span>
+                    <h3 id="foundOrderNumber">AS-1001</h3>
+                </div>
+                <div>
+                    <span>Order Date</span>
+                    <h3 id="foundOrderDate">June 16, 2026</h3>
+                </div>
+            </div>
+            <div class="order-details">
+                <div class="detail-row">
+                    <span>Business Name:</span>
+                    <strong id="foundBusinessName">Amplified Sites</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Package:</span>
+                    <strong id="foundPackage">Business Website</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Total Price:</span>
+                    <strong id="foundTotalPrice">$650.00</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Deposit Paid:</span>
+                    <strong id="foundDepositPaid">$325.00</strong>
+                </div>
+            </div>
+            <div class="balance-section">
+                <div class="balance-row">
+                    <span>Remaining Balance:</span>
+                    <strong id="foundBalance">$325.00</strong>
+                </div>
+            </div>
+            <a
+                id="payBalanceBtn"
+                class="pay-btn"
+                href="#"
+                target="_blank"
+            >
+                <i class="fa-solid fa-lock"></i>
+                Pay Remaining Balance
+            </a>
+            <div class="secure-payment">
+                <i class="fa-solid fa-shield-halved"></i>
+                Secure payment powered by Stripe
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="ampsiteslogo.png" alt="get-in-touch">
+                    <h2>Amplified Sites</h2>
+                </div>
+                 <p>
+                    Building simple, beautiful websites for businesses.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                    <a>Website Design</a>
+                    <a>Web Development</a>
+                    <a>E-commerce Solutions</a>
+                    <a>SEO & Digital Marketing</a>
+                    <a>Website Support</a>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                    <a href="privacy.html" class="privacy">Privacy Policy</a>
+                    <a href="terms.html" class="terms">Terms of Service</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>✉️ Amplifiedsites@Outlook.com</p>
+                <p>☏ (414) 943-2734</p>
+                <p>🗺️ Manitowoc, WI</p>
+            </div>
+         <div class="copy-right">© 2026 Amplified Sites. All rights reserved.</div>
+         <div class="copy-right">Designed by Amplified Sites</div>
+    </footer>
+</body>
+</html>
