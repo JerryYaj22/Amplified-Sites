@@ -1972,192 +1972,103 @@ justify-content: flex-start;
 }
 
 /* =========================
-   GLOBAL SAFETY
+   GLOBAL MOBILE FIX (iPhone Safari safe)
 ========================= */
+
 html, body {
-    overflow-x: hidden;
-    width: 100%;
-}
-
-img {
-    max-width: 100%;
     height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix modern viewport bug on iPhone */
+.index-hero {
+    min-height: 100svh;
 }
 
 /* =========================
-   TABLET (1024px and down)
+   TRACKER / DASHBOARD FIX
 ========================= */
-@media (max-width: 1024px) {
 
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    footer,
-    .services,
-    .process,
-    .tracker-hero {
-        padding: 60px 40px;
-    }
+.tracker-hero {
+    padding: 80px 20px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
 
-    .hero-content,
-    .about-container,
-    .cta-box,
-    #contact,
-    #steps-pay {
-        flex-direction: column;
-        text-align: center;
-    }
+.tracker-box {
+    width: 100%;
+    max-width: 100%;
+}
 
-    .hero-text h1 {
-        font-size: 60px;
-    }
+/* Prevent dashboard cut-off */
+.project-dashboard {
+    padding: 40px 20px 120px;
+    overflow: visible;
+}
 
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #package {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tracker-box {
-        width: 100%;
-    }
+/* Make sure hidden dashboard doesn't clip when shown */
+#dashboard {
+    width: 100%;
+    height: auto;
+    overflow: visible;
 }
 
 /* =========================
-   MOBILE (768px and down)
+   FLEX + GRID SAFETY FIX
 ========================= */
+
+.hero-content,
+.about-container,
+.cta-box,
+#contact,
+#steps-pay {
+    flex-wrap: wrap;
+}
+
+/* Prevent flex children overflow */
+.hero-content > *,
+.about-container > * {
+    max-width: 100%;
+}
+
+/* =========================
+   PROJECT GRID FIX (mobile safe)
+========================= */
+
 @media (max-width: 768px) {
-
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    footer,
-    .services,
-    .process,
-    .tracker-hero {
-        padding: 30px 20px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0;
-        gap: 15px;
-    }
-
-    .logo h1 {
-        font-size: 28px;
-    }
-
-    .hero-text h1 {
-        font-size: 42px;
-    }
-
-    .hero-text p {
-        font-size: 18px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn1,
-    .btn2,
-    .quote-btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .project-grid,
-    #package {
+    .dashboard-grid {
         grid-template-columns: 1fr;
     }
 
-    .project-card {
-        width: 100%;
-    }
-
-    .track-form {
+    .tracker-hero {
         flex-direction: column;
     }
 
-    .track-form button {
-        width: 100%;
-    }
-
-    .project-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .progress-content {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .progress-content h1 {
-        font-size: 3rem;
-    }
-
-    .circle-progress {
-        width: 120px;
-        height: 120px;
-    }
-
-    .circle-inner {
-        width: 85px;
-        height: 85px;
-    }
-
-    .footer-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .process-grid {
-        flex-direction: column;
-    }
-
-    .process-grid::before {
-        display: none;
+    .hero-left h1 {
+        font-size: 40px;
     }
 }
 
 /* =========================
-   SMALL MOBILE (480px and down)
+   SMALL PHONE FIX (iPhone SE etc.)
 ========================= */
+
 @media (max-width: 480px) {
-
-    .hero-text h1,
-    .journey-hero h3,
-    .about-text h2,
-    .process-title {
-        font-size: 32px;
-    }
-
-    .hero-text p,
-    .about-text p,
-    .process-card p {
-        font-size: 16px;
-    }
 
     .tracker-box {
         padding: 20px;
     }
 
-    .progress-content h1 {
-        font-size: 2.5rem;
+    .project-dashboard {
+        padding: 30px 15px 120px;
+    }
+
+    .progress-content {
+        flex-direction: column;
+        gap: 20px;
     }
 
     .circle-progress {
@@ -2168,23 +2079,5 @@ img {
     .circle-inner {
         width: 70px;
         height: 70px;
-    }
-
-    .stages,
-    .nums,
-    .plans {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .stage {
-        width: 40px;
-        height: 40px;
-    }
-
-    .plan {
-        width: auto;
-        height: auto;
-        font-size: 12px;
     }
 }
