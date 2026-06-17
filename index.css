@@ -1972,10 +1972,10 @@ justify-content: flex-start;
 }
 
 /* =========================
-   RESPONSIVE FIX (MOBILE)
+   TABLETS (1024px)
 ========================= */
-
 @media (max-width: 1024px) {
+
     .hero,
     .index-hero,
     .services,
@@ -1986,58 +1986,17 @@ justify-content: flex-start;
         padding: 60px 40px;
     }
 
-    .hero-text h1 {
-        font-size: 55px;
-    }
-
-    .hero-content {
+    .hero-content,
+    .about-container,
+    .tracker-hero,
+    #contact,
+    #steps-pay {
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-image img {
-        width: 100%;
-    }
-
-    .nav-links {
-        gap: 15px;
-        margin-right: 20px;
-        flex-wrap: wrap;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tracker-box {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero,
-    .index-hero,
-    .services,
-    .process,
-    .about,
-    .projects,
-    footer {
-        padding: 40px 20px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0;
-    }
-
     .hero-text h1 {
-        font-size: 40px;
+        font-size: 55px;
     }
 
     .hero-text p {
@@ -2045,71 +2004,210 @@ justify-content: flex-start;
     }
 
     .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .services-grid {
-        gap: 30px;
-    }
-
-    .process-grid {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .process-grid::before {
-        display: none;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .project-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .cta-box {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
+    #package {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
 
-    .tracker-hero {
-        flex-direction: column;
+    .details-grid,
+    .cal-grid {
+        grid-template-columns: 1fr;
     }
 
-    .tracker-box {
-        width: 100%;
+    .process-grid {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .process-grid::before {
+        display: none;
+    }
+
+    .stages,
+    .nums,
+    .plans {
+        gap: 40px;
+        flex-wrap: wrap;
     }
 }
 
-@media (max-width: 480px) {
+/* =========================
+   MOBILE (768px)
+========================= */
+@media (max-width: 768px) {
+
+    .hero,
+    .index-hero,
+    .services,
+    .process,
+    .about,
+    .projects,
+    footer {
+        padding: 50px 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        margin: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+    }
+
     .hero-text h1 {
-        font-size: 32px;
+        font-size: 42px;
     }
 
     .hero-text p {
         font-size: 16px;
     }
 
+    .hero-image img,
+    .about-image img {
+        width: 100%;
+    }
+
+    .about-text h2 {
+        font-size: 40px;
+    }
+
+    .section-title,
+    .process-title,
+    .faq-title h3,
+    .terms-header h1 {
+        font-size: 36px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    #package {
+        grid-template-columns: 1fr;
+    }
+
+    .tracker-box {
+        width: 100%;
+    }
+
+    .track-form {
+        flex-direction: column;
+    }
+
+    .progress-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .order-top-info,
+    .detail-row,
+    .balance-row,
+    .project-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .email-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-number-box {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .cta-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-grid,
+    .grid-questions {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* =========================
+   SMALL PHONES (480px)
+========================= */
+@media (max-width: 480px) {
+
+    .hero-text h1,
+    .success-hero h1,
+    .hero-left h1 {
+        font-size: 32px;
+    }
+
+    .journey-hero h3 {
+        font-size: 38px;
+    }
+
+    .hero-text p,
+    .success-hero p {
+        font-size: 15px;
+    }
+
     .btn1,
-    .btn2 {
+    .btn2,
+    .quote-btn,
+    .cta-btn,
+    .track-btn,
+    .package {
         width: 100%;
         text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
     }
 
     .service-card {
         width: 100%;
     }
 
-    .cta-left h2 {
-        font-size: 28px;
+    .process-card h3,
+    .service-card h3 {
+        font-size: 22px;
     }
 
-    .project-card {
-        width: 100%;
+    .tracker-box,
+    .order-card,
+    .find-order-card,
+    .cta1,
+    .deposit {
+        padding: 20px;
     }
 
     .circle-progress {
@@ -2120,5 +2218,23 @@ justify-content: flex-start;
     .circle-inner {
         width: 80px;
         height: 80px;
+    }
+
+    .progress-content h1 {
+        font-size: 3rem;
+    }
+
+    .stages,
+    .nums,
+    .plans {
+        gap: 15px;
+    }
+
+    .order-number-box span {
+        font-size: 2rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.5rem;
     }
 }
