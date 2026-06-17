@@ -2138,6 +2138,43 @@ justify-content: flex-start;
         text-align: center;
     }
 }
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .btn1,
+    .btn2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+    .cta-left h2 {
+        font-size: 28px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .circle-progress {
+        width: 110px;
+        height: 110px;
+    }
+
+    .circle-inner {
+        width: 80px;
+        height: 80px;
+    }
 /* =========================
    RESPONSIVE FIX (MOBILE)
 ========================= */
