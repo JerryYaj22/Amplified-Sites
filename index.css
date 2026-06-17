@@ -1,4 +1,4 @@
-make this responsive *{
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -1971,50 +1971,42 @@ justify-content: flex-start;
     color: #2563eb;
 }
 
-/* =======================================
-   RESPONSIVE DESIGN
-======================================= */
+/* =========================
+   RESPONSIVE FIX (MOBILE)
+========================= */
 
-/* Tablets */
 @media (max-width: 1024px) {
-
     .hero,
     .index-hero,
+    .services,
+    .process,
     .about,
     .projects,
     footer {
         padding: 60px 40px;
     }
 
-    .hero-content,
-    .about-container,
-    .cta-box,
-    #contact,
-    #steps-pay {
+    .hero-text h1 {
+        font-size: 55px;
+    }
+
+    .hero-content {
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-text h1 {
-        font-size: 60px;
+    .hero-image img {
+        width: 100%;
     }
 
-    .hero-image img,
-    .about-image img {
-        width: 100%;
-        max-width: 700px;
+    .nav-links {
+        gap: 15px;
+        margin-right: 20px;
+        flex-wrap: wrap;
     }
 
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    #package {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
     }
 
     .tracker-box {
@@ -2022,35 +2014,30 @@ justify-content: flex-start;
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-
     .hero,
     .index-hero,
+    .services,
+    .process,
     .about,
     .projects,
     footer {
-        padding: 30px 20px;
+        padding: 40px 20px;
     }
 
     .navbar {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
     }
 
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
         margin: 0;
-        gap: 15px;
-    }
-
-    .logo h1 {
-        font-size: 28px;
     }
 
     .hero-text h1 {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     .hero-text p {
@@ -2059,433 +2046,79 @@ justify-content: flex-start;
 
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .services-grid {
+        gap: 30px;
+    }
+
+    .process-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .process-grid::before {
+        display: none;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tracker-hero {
+        flex-direction: column;
+    }
+
+    .tracker-box {
         width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
     }
 
     .btn1,
-    .btn2,
-    .quote-btn {
+    .btn2 {
         width: 100%;
         text-align: center;
     }
 
-    .project-grid,
-    #package {
-        grid-template-columns: 1fr;
+    .service-card {
+        width: 100%;
+    }
+
+    .cta-left h2 {
+        font-size: 28px;
     }
 
     .project-card {
         width: 100%;
     }
 
-    .track-form {
-        flex-direction: column;
-    }
-
-    .track-form button {
-        width: 100%;
-    }
-
-    .project-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .progress-content {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .progress-content h1 {
-        font-size: 3rem;
-    }
-
     .circle-progress {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
     }
 
     .circle-inner {
-        width: 85px;
-        height: 85px;
-    }
-
-    .details-grid,
-    .cal-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .footer-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-logo {
-        justify-content: center;
-    }
-
-    .process-grid {
-        flex-direction: column;
-    }
-
-    .process-grid::before {
-        display: none;
-    }
-}
-
-/* Small Phones */
-@media (max-width: 480px) {
-
-    .hero-text h1,
-    .journey-hero h3,
-    .about-text h2,
-    .process-title {
-        font-size: 32px;
-    }
-
-    .hero-text p,
-    .about-text p,
-    .process-card p {
-        font-size: 16px;
-    }
-
-    .tracker-box {
-        padding: 20px;
-    }
-
-    .progress-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .circle-progress {
-        width: 100px;
-        height: 100px;
-    }
-
-    .circle-inner {
-        width: 70px;
-        height: 70px;
-    }
-
-    .stages,
-    .nums,
-    .plans {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-
-    .stage {
-        width: 40px;
-        height: 40px;
-    }
-
-    .plan {
-        width: auto;
-        height: auto;
-        font-size: 12px;
-        text-align: center;
-    }
-
-    /* ==========================================
-   UNIVERSAL RESPONSIVE FIXES
-========================================== */
-
-html,
-body{
-    overflow-x:hidden;
-    width:100%;
-}
-
-img{
-    max-width:100%;
-    height:auto;
-}
-
-/* =========================
-   LARGE TABLETS
-========================= */
-@media (max-width:1200px){
-
-    #package{
-        grid-template-columns:repeat(2,1fr);
-        max-width:900px;
-        margin:auto;
-    }
-
-    .hero-content,
-    .about-container,
-    #steps-pay{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .secure-card,
-    .steps-card{
-        justify-content:center;
-    }
-
-    .tracker-box{
-        width:100%;
-        max-width:700px;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-/* =========================
-   TABLETS
-========================= */
-@media (max-width:992px){
-
-    .navbar{
-        flex-direction:column;
-        gap:20px;
-    }
-
-    .nav-links{
-        margin:0;
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .hero-text h1{
-        font-size:55px;
-    }
-
-    .about-container{
-        flex-direction:column;
-    }
-
-    .project-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .footer-grid{
-        justify-content:center;
-        text-align:center;
-    }
-
-    #steps-pay{
-        padding:40px 20px;
-    }
-
-    .find-order-card{
-        max-width:100%;
-    }
-
-    .order-found-card{
-        width:100%;
-        max-width:700px;
-    }
-
-    .order-top-info{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    .details-grid{
-        grid-template-columns:1fr;
-    }
-
-    .cal-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width:768px){
-
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    footer{
-        padding:30px 20px;
-    }
-
-    .logo{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .logo h1{
-        font-size:28px;
-    }
-
-    .hero-text h1{
-        font-size:40px;
-    }
-
-    .hero-text p{
-        font-size:17px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-        width:100%;
-    }
-
-    .btn1,
-    .btn2,
-    .quote-btn{
-        width:100%;
-        text-align:center;
-    }
-
-    #package{
-        grid-template-columns:1fr;
-        max-width:500px;
-    }
-
-    .landing-page{
-        height:auto;
-        padding-bottom:20px;
-    }
-
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    .project-card{
-        width:100%;
-    }
-
-    .tracker-hero{
-        padding:50px 20px;
-        flex-direction:column;
-    }
-
-    .hero-left h1{
-        font-size:40px;
-    }
-
-    .track-form{
-        flex-direction:column;
-    }
-
-    .track-form button{
-        width:100%;
-    }
-
-    .progress-content{
-        flex-direction:column;
-        gap:25px;
-    }
-
-    .stages,
-    .nums,
-    .plans{
-        flex-wrap:wrap;
-        gap:20px;
-    }
-
-    .find-order-card{
-        padding:25px;
-    }
-
-    .card-header{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .order-found-card{
-        padding:25px;
-        width:100%;
-    }
-
-    .detail-row{
-        flex-direction:column;
-        gap:5px;
-    }
-
-    .balance-row{
-        flex-direction:column;
-        gap:10px;
-    }
-
-    .pay-btn{
-        font-size:14px;
-    }
-
-    .footer-grid{
-        flex-direction:column;
-        gap:30px;
-    }
-
-    .grid-questions{
-        flex-direction:column;
-        gap:30px;
-    }
-}
-
-/* =========================
-   SMALL PHONES
-========================= */
-@media (max-width:480px){
-
-    .hero-text h1,
-    .journey-hero h3,
-    .about-text h2,
-    .faq-title h3{
-        font-size:30px;
-    }
-
-    .payment-hero span{
-        font-size:28px;
-    }
-
-    .payment-hero p{
-        font-size:15px;
-        padding:0 10px;
-    }
-
-    .card-header h2{
-        font-size:28px;
-    }
-
-    .order-found-header h2{
-        font-size:24px;
-    }
-
-    .circle-progress{
-        width:100px;
-        height:100px;
-    }
-
-    .circle-inner{
-        width:70px;
-        height:70px;
-    }
-
-    .progress-content h1{
-        font-size:2.5rem;
-    }
-
-    .package{
-        display:block;
-        width:100%;
-    }
-
-    .find-order-card input,
-    .find-order-card button{
-        height:50px;
-    }
-
-    .secure-card,
-    .steps-card{
-        flex-direction:column;
-        text-align:center;
-        align-items:center;
-    }
-
-    .secure-text,
-    .steps-text{
-        font-size:16px;
+        width: 80px;
+        height: 80px;
     }
 }
