@@ -53,7 +53,7 @@ const projects = {
    CONFIG
 ========================= */
 const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
-const SUPABASE_KEY = "YOUR_KEY_HERE"; // 🔒 Move to env in production
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA"; // 🔒 Move to env in production
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
