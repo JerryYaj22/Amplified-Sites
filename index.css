@@ -1971,90 +1971,64 @@ justify-content: flex-start;
     color: #2563eb;
 }
 
-/* =======================================
-   RESPONSIVE DESIGN
-======================================= */
+/* ===================================
+   RESPONSIVE FIXES - ALL DEVICES
+=================================== */
 
-/* Tablets */
+/* Large Tablets */
 @media (max-width: 1024px) {
 
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    footer {
-        padding: 60px 40px;
-    }
-
-    .hero-content,
+    .tracker-hero,
     .about-container,
-    .cta-box,
-    #contact,
-    #steps-pay {
+    .hero-content {
         flex-direction: column;
         text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 60px;
-    }
-
-    .hero-image img,
-    .about-image img {
-        width: 100%;
-        max-width: 700px;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #package {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
 
-    .tracker-box {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tracker-box,
+    .find-order-card,
+    #orderFoundCard {
         width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-text h1,
+    .hero-left h1 {
+        font-size: 3rem;
     }
 }
 
-/* Mobile */
+/* Tablets */
 @media (max-width: 768px) {
 
     .hero,
     .index-hero,
+    .services,
+    .process,
     .about,
     .projects,
     footer {
-        padding: 30px 20px;
+        padding: 40px 20px;
     }
 
     .navbar {
         flex-direction: column;
-        gap: 20px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0;
         gap: 15px;
     }
 
-    .logo h1 {
-        font-size: 28px;
-    }
-
-    .hero-text h1 {
-        font-size: 42px;
-    }
-
-    .hero-text p {
-        font-size: 18px;
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0;
+        gap: 15px;
     }
 
     .hero-buttons {
@@ -2063,67 +2037,13 @@ justify-content: flex-start;
     }
 
     .btn1,
-    .btn2,
-    .quote-btn {
+    .btn2 {
         width: 100%;
         text-align: center;
     }
 
-    .project-grid,
-    #package {
+    .project-grid {
         grid-template-columns: 1fr;
-    }
-
-    .project-card {
-        width: 100%;
-    }
-
-    .track-form {
-        flex-direction: column;
-    }
-
-    .track-form button {
-        width: 100%;
-    }
-
-    .project-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .progress-content {
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .progress-content h1 {
-        font-size: 3rem;
-    }
-
-    .circle-progress {
-        width: 120px;
-        height: 120px;
-    }
-
-    .circle-inner {
-        width: 85px;
-        height: 85px;
-    }
-
-    .details-grid,
-    .cal-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .footer-grid {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-logo {
-        justify-content: center;
     }
 
     .process-grid {
@@ -2133,26 +2053,87 @@ justify-content: flex-start;
     .process-grid::before {
         display: none;
     }
+
+    .track-form {
+        flex-direction: column;
+    }
+
+    .progress-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .order-top-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .balance-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cal-grid,
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
 }
 
-/* Small Phones */
+/* Phones */
 @media (max-width: 480px) {
 
     .hero-text h1,
-    .journey-hero h3,
+    .hero-left h1,
     .about-text h2,
-    .process-title {
-        font-size: 32px;
+    .journey-hero h3 {
+        font-size: 2rem;
     }
 
     .hero-text p,
-    .about-text p,
-    .process-card p {
-        font-size: 16px;
+    .hero-left p,
+    .about-text p {
+        font-size: 15px;
     }
 
-    .tracker-box {
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .logo img {
+        width: 60px;
+    }
+
+    .tracker-box,
+    .find-order-card {
         padding: 20px;
+    }
+
+    /* FIXES THE CUT-OFF CARD */
+    #orderFoundCard {
+        padding: 20px;
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .order-found-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .order-found-header h2 {
+        font-size: 24px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
     }
 
     .progress-content h1 {
@@ -2160,20 +2141,22 @@ justify-content: flex-start;
     }
 
     .circle-progress {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
     }
 
     .circle-inner {
-        width: 70px;
-        height: 70px;
+        width: 75px;
+        height: 75px;
     }
 
+    /* BIGGEST IPHONE FIX */
     .stages,
     .nums,
     .plans {
         gap: 10px;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .stage {
@@ -2183,8 +2166,21 @@ justify-content: flex-start;
 
     .plan {
         width: auto;
-        height: auto;
         font-size: 12px;
         text-align: center;
+        height: auto;
+    }
+
+    .status-pill {
+        width: 100%;
+        text-align: center;
+    }
+
+    .project-dashboard {
+        padding: 15px;
+    }
+
+    .prog {
+        padding: 20px;
     }
 }
