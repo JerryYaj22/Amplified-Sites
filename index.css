@@ -2428,18 +2428,7 @@ VIEW PACKAGE RESPONSIVE
 
 @media screen and (max-width:768px){
 
-    /* Navbar */
-    .navbar{
-        flex-direction:column;
-        gap:20px;
-        text-align:center;
-    }
-
-    .nav-links{
-        flex-direction:column;
-        gap:15px;
-        margin:0;
-    }
+   
 
     /* Payment Hero */
     .payment-hero{
@@ -2712,25 +2701,7 @@ TABLETS
 
 @media screen and (max-width:1024px){
 
-    .navbar{
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:20px;
-    }
-
-    .hero,
-    .about,
-    .tracker-hero,
-    .success-hero{
-        padding:60px 40px;
-    }
-
-    .dashboard-grid,
-    .info-grid,
-    .details-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
+    
 }
 
 /* ==========================
@@ -2739,18 +2710,7 @@ PHONES
 
 @media screen and (max-width:768px){
 
-    /* Navigation */
-    .navbar{
-        flex-direction:column;
-        text-align:center;
-        gap:20px;
-    }
-
-    .nav-links{
-        flex-direction:column;
-        gap:15px;
-        margin:0;
-    }
+  
 
     /* Hero sections */
     .tracker-hero,
