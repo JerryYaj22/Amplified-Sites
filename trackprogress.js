@@ -53,47 +53,53 @@ const projects = {
    CONFIG
 ========================= */
 const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
-const SUPABASE_KEY = "YOUR_KEY_HERE"; // 🔒 Move to env in production
+const SUPABASE_KEY = "YOUR_ANON_KEY";
 
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-let currentOrderId = null;
-
-
-/* =========================
-   UTILITIES
-========================= */
-function formatOrderId(orderId) {
-    return orderId.trim().toUpperCase().replace(/\s+/g, "");
-}
-
-
-/* =========================
-   FETCH PROJECT
-========================= */
-async function fetchProject(orderId) {
-    const cleanedOrderId = formatOrderId(orderId);
-
+async function createOrder(orderData) {
     try {
-        const res = await fetch(
-            `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.*${cleanedOrderId}*`,
+        const response = await fetch(
+            `${SUPABASE_URL}/rest/v1/projects`,
             {
+                method: "POST",
                 headers: {
-                    apikey: SUPABASE_KEY,
-                    Authorization: `Bearer ${SUPABASE_KEY}`
-                }
+                    "Content-Type": "application/json",
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`,
+                    "Prefer": "return=representation"
+                },
+                body: JSON.stringify({
+                    email: orderData.email,
+                    business_name: orderData.business_name,
+                    package: orderData.package,
+                    status: "Pending",
+                    progress: 0,
+                    stage: "Planning",
+                    total_price: orderData.total_price,
+                    deposit_paid: orderData.deposit_paid,
+                    stripe_link: orderData.stripe_link
+                })
             }
         );
 
-        const data = await res.json();
+        const data = await response.json();
 
-        console.log("Supabase response:", data);
+        if (!response.ok) {
+            throw new Error(JSON.stringify(data));
+        }
 
-        return data.length ? data[0] : null;
+        const order = data[0];
+
+        alert(
+            `Thank you for your order!\n\nYour Order Number is:\n${order.order_id}`
+        );
+
+        console.log("Created Order:", order);
+
+        return order;
 
     } catch (error) {
-        console.error("Fetch error:", error);
-        return null;
+        console.error("Order Creation Error:", error);
+        alert("Unable to create order.");
     }
 }
 
