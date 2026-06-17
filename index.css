@@ -1972,9 +1972,10 @@ justify-content: flex-start;
 }
 
 /* =========================
-   RESPONSIVE FIX (MOBILE)
+   RESPONSIVE DESIGN
 ========================= */
 
+/* Tablets */
 @media (max-width: 1024px) {
     .hero,
     .index-hero,
@@ -2003,6 +2004,7 @@ justify-content: flex-start;
         gap: 15px;
         margin-right: 20px;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .project-grid {
@@ -2014,6 +2016,7 @@ justify-content: flex-start;
     }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
     .hero,
     .index-hero,
@@ -2085,7 +2088,7 @@ justify-content: flex-start;
     }
 }
 
-/* Small Phones */
+/* Small phones */
 @media (max-width: 480px) {
 
     .hero-text h1,
@@ -2099,6 +2102,21 @@ justify-content: flex-start;
     .about-text p,
     .process-card p {
         font-size: 16px;
+    }
+
+    .btn1,
+    .btn2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .service-card,
+    .project-card {
+        width: 100%;
+    }
+
+    .cta-left h2 {
+        font-size: 28px;
     }
 
     .tracker-box {
@@ -2136,193 +2154,5 @@ justify-content: flex-start;
         height: auto;
         font-size: 12px;
         text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 32px;
-    }
-
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    .btn1,
-    .btn2 {
-        width: 100%;
-        text-align: center;
-    }
-
-    .service-card {
-        width: 100%;
-    }
-
-    .cta-left h2 {
-        font-size: 28px;
-    }
-
-    .project-card {
-        width: 100%;
-    }
-
-    .circle-progress {
-        width: 110px;
-        height: 110px;
-    }
-
-    .circle-inner {
-        width: 80px;
-        height: 80px;
-    }
-/* =========================
-   RESPONSIVE FIX (MOBILE)
-========================= */
-
-@media (max-width: 1024px) {
-    .hero,
-    .index-hero,
-    .services,
-    .process,
-    .about,
-    .projects,
-    footer {
-        padding: 60px 40px;
-    }
-
-    .hero-text h1 {
-        font-size: 55px;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-image img {
-        width: 100%;
-    }
-
-    .nav-links {
-        gap: 15px;
-        margin-right: 20px;
-        flex-wrap: wrap;
-    }
-
-    .project-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tracker-box {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero,
-    .index-hero,
-    .services,
-    .process,
-    .about,
-    .projects,
-    footer {
-        padding: 40px 20px;
-    }
-
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 0;
-    }
-
-    .hero-text h1 {
-        font-size: 40px;
-    }
-
-    .hero-text p {
-        font-size: 18px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .services-grid {
-        gap: 30px;
-    }
-
-    .process-grid {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .process-grid::before {
-        display: none;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cta-box {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .tracker-hero {
-        flex-direction: column;
-    }
-
-    .tracker-box {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-text h1 {
-        font-size: 32px;
-    }
-
-    .hero-text p {
-        font-size: 16px;
-    }
-
-    .btn1,
-    .btn2 {
-        width: 100%;
-        text-align: center;
-    }
-
-    .service-card {
-        width: 100%;
-    }
-
-    .cta-left h2 {
-        font-size: 28px;
-    }
-
-    .project-card {
-        width: 100%;
-    }
-
-    .circle-progress {
-        width: 110px;
-        height: 110px;
-    }
-
-    .circle-inner {
-        width: 80px;
-        height: 80px;
     }
 }
