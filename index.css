@@ -1,4 +1,4 @@
-*{
+make this responsive *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -186,6 +186,7 @@ body{
 
 .section-title{
     font-size: 50px;
+    margin-bottom: px;
     line-height: 1.7;
 }
 
@@ -1970,104 +1971,192 @@ justify-content: flex-start;
     color: #2563eb;
 }
 
-/* =========================
-   GLOBAL MOBILE FIX (iPhone Safari safe)
-========================= */
+/* =======================================
+   RESPONSIVE DESIGN
+======================================= */
 
-html, body {
-    height: auto;
-    min-height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
+/* Tablets */
+@media (max-width: 1024px) {
 
-/* Fix modern viewport bug on iPhone */
-.index-hero {
-    min-height: 100svh;
-}
+    .hero,
+    .index-hero,
+    .about,
+    .projects,
+    footer {
+        padding: 60px 40px;
+    }
 
-/* =========================
-   TRACKER / DASHBOARD FIX
-========================= */
+    .hero-content,
+    .about-container,
+    .cta-box,
+    #contact,
+    #steps-pay {
+        flex-direction: column;
+        text-align: center;
+    }
 
-.tracker-hero {
-    padding: 80px 20px;
-    flex-wrap: wrap;
-    gap: 40px;
-}
+    .hero-text h1 {
+        font-size: 60px;
+    }
 
-.tracker-box {
-    width: 100%;
-    max-width: 100%;
-}
+    .hero-image img,
+    .about-image img {
+        width: 100%;
+        max-width: 700px;
+    }
 
-/* Prevent dashboard cut-off */
-.project-dashboard {
-    padding: 40px 20px 120px;
-    overflow: visible;
-}
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-/* Make sure hidden dashboard doesn't clip when shown */
-#dashboard {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-}
+    #package {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-/* =========================
-   FLEX + GRID SAFETY FIX
-========================= */
-
-.hero-content,
-.about-container,
-.cta-box,
-#contact,
-#steps-pay {
-    flex-wrap: wrap;
-}
-
-/* Prevent flex children overflow */
-.hero-content > *,
-.about-container > * {
-    max-width: 100%;
-}
-
-/* =========================
-   PROJECT GRID FIX (mobile safe)
-========================= */
-
-@media (max-width: 768px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
 
-    .tracker-hero {
-        flex-direction: column;
-    }
-
-    .hero-left h1 {
-        font-size: 40px;
+    .tracker-box {
+        width: 100%;
     }
 }
 
-/* =========================
-   SMALL PHONE FIX (iPhone SE etc.)
-========================= */
+/* Mobile */
+@media (max-width: 768px) {
 
+    .hero,
+    .index-hero,
+    .about,
+    .projects,
+    footer {
+        padding: 30px 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
+        gap: 15px;
+    }
+
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .hero-text p {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn1,
+    .btn2,
+    .quote-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .project-grid,
+    #package {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .track-form {
+        flex-direction: column;
+    }
+
+    .track-form button {
+        width: 100%;
+    }
+
+    .project-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .progress-content {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .progress-content h1 {
+        font-size: 3rem;
+    }
+
+    .circle-progress {
+        width: 120px;
+        height: 120px;
+    }
+
+    .circle-inner {
+        width: 85px;
+        height: 85px;
+    }
+
+    .details-grid,
+    .cal-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .process-grid {
+        flex-direction: column;
+    }
+
+    .process-grid::before {
+        display: none;
+    }
+}
+
+/* Small Phones */
 @media (max-width: 480px) {
+
+    .hero-text h1,
+    .journey-hero h3,
+    .about-text h2,
+    .process-title {
+        font-size: 32px;
+    }
+
+    .hero-text p,
+    .about-text p,
+    .process-card p {
+        font-size: 16px;
+    }
 
     .tracker-box {
         padding: 20px;
     }
 
-    .project-dashboard {
-        padding: 30px 15px 120px;
-    }
-
-    .progress-content {
-        flex-direction: column;
-        gap: 20px;
+    .progress-content h1 {
+        font-size: 2.5rem;
     }
 
     .circle-progress {
@@ -2079,10 +2168,28 @@ html, body {
         width: 70px;
         height: 70px;
     }
-}
-/* ==========================================
-   MOBILE RESPONSIVE FIX
-   ADD THIS AT VERY BOTTOM OF CSS
+
+    .stages,
+    .nums,
+    .plans {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .stage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .plan {
+        width: auto;
+        height: auto;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* ==========================================
+   UNIVERSAL RESPONSIVE FIXES
 ========================================== */
 
 html,
@@ -2091,52 +2198,48 @@ body{
     width:100%;
 }
 
-/* TABLETS */
-@media (max-width:1024px){
+img{
+    max-width:100%;
+    height:auto;
+}
 
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    .services,
-    .process,
-    footer{
-        padding-left:30px;
-        padding-right:30px;
+/* =========================
+   LARGE TABLETS
+========================= */
+@media (max-width:1200px){
+
+    #package{
+        grid-template-columns:repeat(2,1fr);
+        max-width:900px;
+        margin:auto;
     }
 
     .hero-content,
     .about-container,
-    .cta-box,
-    #contact,
     #steps-pay{
         flex-direction:column;
         text-align:center;
     }
 
-    .hero-text h1{
-        font-size:60px;
+    .secure-card,
+    .steps-card{
+        justify-content:center;
     }
 
-    .about-text h2{
-        font-size:45px;
-    }
-
-    .project-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .project-card{
+    .tracker-box{
         width:100%;
+        max-width:700px;
     }
 
-    #package{
-        grid-template-columns:repeat(2,1fr);
+    .dashboard-grid{
+        grid-template-columns:1fr;
     }
 }
 
-/* PHONES */
-@media (max-width:768px){
+/* =========================
+   TABLETS
+========================= */
+@media (max-width:992px){
 
     .navbar{
         flex-direction:column;
@@ -2147,15 +2250,80 @@ body{
         margin:0;
         flex-wrap:wrap;
         justify-content:center;
-        gap:15px;
     }
 
     .hero-text h1{
-        font-size:42px;
+        font-size:55px;
+    }
+
+    .about-container{
+        flex-direction:column;
+    }
+
+    .project-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        justify-content:center;
+        text-align:center;
+    }
+
+    #steps-pay{
+        padding:40px 20px;
+    }
+
+    .find-order-card{
+        max-width:100%;
+    }
+
+    .order-found-card{
+        width:100%;
+        max-width:700px;
+    }
+
+    .order-top-info{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .details-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cal-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width:768px){
+
+    .hero,
+    .index-hero,
+    .about,
+    .projects,
+    footer{
+        padding:30px 20px;
+    }
+
+    .logo{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .logo h1{
+        font-size:28px;
+    }
+
+    .hero-text h1{
+        font-size:40px;
     }
 
     .hero-text p{
-        font-size:18px;
+        font-size:17px;
     }
 
     .hero-buttons{
@@ -2164,66 +2332,37 @@ body{
     }
 
     .btn1,
-    .btn2{
+    .btn2,
+    .quote-btn{
         width:100%;
         text-align:center;
     }
 
-    .section-title,
-    .process-title,
-    .faq-title h3,
-    .success-hero h1{
-        font-size:36px;
+    #package{
+        grid-template-columns:1fr;
+        max-width:500px;
+    }
+
+    .landing-page{
+        height:auto;
+        padding-bottom:20px;
     }
 
     .project-grid{
         grid-template-columns:1fr;
     }
 
-    #package{
-        grid-template-columns:1fr;
-    }
-
-    .package-hero{
-        max-width:450px;
-        margin:auto;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .project-header{
-        flex-direction:column;
-        gap:20px;
-        text-align:center;
-    }
-
-    .progress-content{
-        flex-direction:column;
-        gap:25px;
-        text-align:center;
-    }
-
-    .stages,
-    .nums,
-    .plans{
-        gap:20px;
-        flex-wrap:wrap;
-    }
-
-    .details-grid{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-    .cal-grid{
-        grid-template-columns:1fr;
-        gap:20px;
-    }
-
-    .tracker-box{
+    .project-card{
         width:100%;
+    }
+
+    .tracker-hero{
+        padding:50px 20px;
+        flex-direction:column;
+    }
+
+    .hero-left h1{
+        font-size:40px;
     }
 
     .track-form{
@@ -2234,120 +2373,119 @@ body{
         width:100%;
     }
 
-    .orderpay{
+    .progress-content{
         flex-direction:column;
+        gap:25px;
+    }
+
+    .stages,
+    .nums,
+    .plans{
+        flex-wrap:wrap;
         gap:20px;
-        padding:20px;
     }
 
-    .find-order-card,
-    #orderFoundCard{
-        width:100%;
-        max-width:100%;
-    }
-
-    #orderFoundCard{
+    .find-order-card{
         padding:25px;
     }
 
-    .order-top-info{
+    .card-header{
         flex-direction:column;
-        gap:15px;
+        text-align:center;
     }
 
-    .detail-row,
-    .balance-row{
+    .order-found-card{
+        padding:25px;
+        width:100%;
+    }
+
+    .detail-row{
         flex-direction:column;
-        align-items:flex-start;
         gap:5px;
     }
 
-    .info-grid{
-        grid-template-columns:1fr;
-    }
-
-    .order-number-box{
+    .balance-row{
         flex-direction:column;
-        gap:20px;
-        text-align:center;
+        gap:10px;
     }
 
-    .order-number-box span{
-        font-size:2rem;
-        word-break:break-word;
+    .pay-btn{
+        font-size:14px;
     }
 
-    .email-box{
+    .footer-grid{
         flex-direction:column;
-        text-align:center;
+        gap:30px;
     }
 
-    .footer-grid,
     .grid-questions{
         flex-direction:column;
         gap:30px;
     }
 }
 
-/* SMALL PHONES */
+/* =========================
+   SMALL PHONES
+========================= */
 @media (max-width:480px){
 
-    .hero-text h1{
-        font-size:34px;
+    .hero-text h1,
+    .journey-hero h3,
+    .about-text h2,
+    .faq-title h3{
+        font-size:30px;
     }
 
-    .hero-text p{
-        font-size:16px;
+    .payment-hero span{
+        font-size:28px;
     }
 
-    .hero,
-    .index-hero,
-    .about,
-    .projects,
-    .services,
-    .process,
-    footer{
-        padding-left:15px;
-        padding-right:15px;
+    .payment-hero p{
+        font-size:15px;
+        padding:0 10px;
     }
 
-    .tracker-hero{
-        padding:60px 15px;
+    .card-header h2{
+        font-size:28px;
     }
 
-    .project-dashboard{
-        padding:20px 10px;
-    }
-
-    .prog{
-        padding:20px;
+    .order-found-header h2{
+        font-size:24px;
     }
 
     .circle-progress{
-        width:110px;
-        height:110px;
+        width:100px;
+        height:100px;
     }
 
     .circle-inner{
-        width:75px;
-        height:75px;
+        width:70px;
+        height:70px;
     }
 
-    .status-pill{
-        font-size:14px;
-        padding:10px 15px;
+    .progress-content h1{
+        font-size:2.5rem;
     }
 
-    .project-header h2{
-        font-size:28px;
+    .package{
+        display:block;
+        width:100%;
+    }
+
+    .find-order-card input,
+    .find-order-card button{
+        height:50px;
+    }
+
+    .secure-card,
+    .steps-card{
+        flex-direction:column;
         text-align:center;
+        align-items:center;
     }
 
-    .thank-you{
-        font-size:36px;
-    }
-
-    .request{
+    .secure-text,
+    .steps-text{
         font-size:16px;
     }
 }
