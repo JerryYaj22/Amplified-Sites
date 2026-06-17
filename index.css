@@ -2081,3 +2081,274 @@ html, body {
         height: 70px;
     }
 }
+/* ==========================================
+   MOBILE RESPONSIVE FIX
+   ADD THIS AT VERY BOTTOM OF CSS
+========================================== */
+
+html,
+body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+/* TABLETS */
+@media (max-width:1024px){
+
+    .hero,
+    .index-hero,
+    .about,
+    .projects,
+    .services,
+    .process,
+    footer{
+        padding-left:30px;
+        padding-right:30px;
+    }
+
+    .hero-content,
+    .about-container,
+    .cta-box,
+    #contact,
+    #steps-pay{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text h1{
+        font-size:60px;
+    }
+
+    .about-text h2{
+        font-size:45px;
+    }
+
+    .project-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .project-card{
+        width:100%;
+    }
+
+    #package{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* PHONES */
+@media (max-width:768px){
+
+    .navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .nav-links{
+        margin:0;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:15px;
+    }
+
+    .hero-text h1{
+        font-size:42px;
+    }
+
+    .hero-text p{
+        font-size:18px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .btn1,
+    .btn2{
+        width:100%;
+        text-align:center;
+    }
+
+    .section-title,
+    .process-title,
+    .faq-title h3,
+    .success-hero h1{
+        font-size:36px;
+    }
+
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    #package{
+        grid-template-columns:1fr;
+    }
+
+    .package-hero{
+        max-width:450px;
+        margin:auto;
+    }
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-header{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
+
+    .progress-content{
+        flex-direction:column;
+        gap:25px;
+        text-align:center;
+    }
+
+    .stages,
+    .nums,
+    .plans{
+        gap:20px;
+        flex-wrap:wrap;
+    }
+
+    .details-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .cal-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .tracker-box{
+        width:100%;
+    }
+
+    .track-form{
+        flex-direction:column;
+    }
+
+    .track-form button{
+        width:100%;
+    }
+
+    .orderpay{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+    }
+
+    .find-order-card,
+    #orderFoundCard{
+        width:100%;
+        max-width:100%;
+    }
+
+    #orderFoundCard{
+        padding:25px;
+    }
+
+    .order-top-info{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .detail-row,
+    .balance-row{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .order-number-box{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
+
+    .order-number-box span{
+        font-size:2rem;
+        word-break:break-word;
+    }
+
+    .email-box{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .footer-grid,
+    .grid-questions{
+        flex-direction:column;
+        gap:30px;
+    }
+}
+
+/* SMALL PHONES */
+@media (max-width:480px){
+
+    .hero-text h1{
+        font-size:34px;
+    }
+
+    .hero-text p{
+        font-size:16px;
+    }
+
+    .hero,
+    .index-hero,
+    .about,
+    .projects,
+    .services,
+    .process,
+    footer{
+        padding-left:15px;
+        padding-right:15px;
+    }
+
+    .tracker-hero{
+        padding:60px 15px;
+    }
+
+    .project-dashboard{
+        padding:20px 10px;
+    }
+
+    .prog{
+        padding:20px;
+    }
+
+    .circle-progress{
+        width:110px;
+        height:110px;
+    }
+
+    .circle-inner{
+        width:75px;
+        height:75px;
+    }
+
+    .status-pill{
+        font-size:14px;
+        padding:10px 15px;
+    }
+
+    .project-header h2{
+        font-size:28px;
+        text-align:center;
+    }
+
+    .thank-you{
+        font-size:36px;
+    }
+
+    .request{
+        font-size:16px;
+    }
+}
