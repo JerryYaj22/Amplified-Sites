@@ -1993,6 +1993,7 @@ justify-content: flex-start;
     #steps-pay {
         flex-direction: column;
         text-align: center;
+        justify-content: center;
     }
 
     .hero-text h1 {
