@@ -53,53 +53,47 @@ const projects = {
    CONFIG
 ========================= */
 const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA";
+const SUPABASE_KEY = "YOUR_KEY_HERE"; // 🔒 Move to env in production
 
-async function createOrder(orderData) {
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentOrderId = null;
+
+
+/* =========================
+   UTILITIES
+========================= */
+function formatOrderId(orderId) {
+    return orderId.trim().toUpperCase().replace(/\s+/g, "");
+}
+
+
+/* =========================
+   FETCH PROJECT
+========================= */
+async function fetchProject(orderId) {
+    const cleanedOrderId = formatOrderId(orderId);
+
     try {
-        const response = await fetch(
-            `${SUPABASE_URL}/rest/v1/projects`,
+        const res = await fetch(
+            `${SUPABASE_URL}/rest/v1/projects?order_id=ilike.*${cleanedOrderId}*`,
             {
-                method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "apikey": SUPABASE_KEY,
-                    "Authorization": `Bearer ${SUPABASE_KEY}`,
-                    "Prefer": "return=representation"
-                },
-                body: JSON.stringify({
-                    email: orderData.email,
-                    business_name: orderData.business_name,
-                    package: orderData.package,
-                    status: "Pending",
-                    progress: 0,
-                    stage: "Planning",
-                    total_price: orderData.total_price,
-                    deposit_paid: orderData.deposit_paid,
-                    stripe_link: orderData.stripe_link
-                })
+                    apikey: SUPABASE_KEY,
+                    Authorization: `Bearer ${SUPABASE_KEY}`
+                }
             }
         );
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (!response.ok) {
-            throw new Error(JSON.stringify(data));
-        }
+        console.log("Supabase response:", data);
 
-        const order = data[0];
-
-        alert(
-            `Thank you for your order!\n\nYour Order Number is:\n${order.order_id}`
-        );
-
-        console.log("Created Order:", order);
-
-        return order;
+        return data.length ? data[0] : null;
 
     } catch (error) {
-        console.error("Order Creation Error:", error);
-        alert("Unable to create order.");
+        console.error("Fetch error:", error);
+        return null;
     }
 }
 
