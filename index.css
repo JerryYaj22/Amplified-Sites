@@ -548,12 +548,12 @@ footer{
 #contact {
     display: flex;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto; 
-    gap: 10%;  
-    background-color: rgba(161, 5, 5, 0.082);
-    align-items: center;
-    background:linear-gradient(to right,#020617,#001845,#020617);
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    background: linear-gradient(to right,#020617,#001845,#020617);
 }
 
 .glass {
@@ -709,9 +709,10 @@ justify-content: flex-start;
 }
 
 .steps-work{
-    padding: 10px 90px;
-    margin-right: auto;
-    margin-left: auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
 }
 
 .steps-work h1{
@@ -742,12 +743,11 @@ justify-content: flex-start;
 .steps-text span::before {
     content: "";
     position: absolute;
-    top: -95%;
-    left: -105px;
-    width: 250%;
-    height: 5px;
+    top: -25px;
+    left: 0;
+    width: 100%;
+    height: 3px;
     background: #f8f8f856;
-    transform: translateY(-50%);
 }
 /* END OF START JOURNEY PAGE */
 
@@ -784,10 +784,13 @@ justify-content: flex-start;
 #package{
     padding-top: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 250px);
-    justify-content: center;
-    gap: 20px;
-    background:linear-gradient(to right,#020617,#001845,#020617);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: linear-gradient(to right,#020617,#001845,#020617);
 }
 .package-hero{
     border: 2px solid #2563eb;
@@ -1670,11 +1673,13 @@ justify-content: flex-start;
 }
 
 .stages {
-    display: flex;
-    justify-content:center;
-    margin-top: 40px;
-    gap: 95px;
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    gap:10px;
+    flex-wrap:wrap;
 }
+
 
 .stage {
     width: 50px;
@@ -1692,9 +1697,11 @@ justify-content: flex-start;
 }
 
 .nums {
-    display: flex;
-    justify-content:center;
-    gap: 95px;
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
 .num {
@@ -1719,13 +1726,12 @@ justify-content: flex-start;
     gap: 95px;
 }
 
-.plan {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10%;
+.plans{
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
 .plan.active {
@@ -1970,203 +1976,294 @@ justify-content: flex-start;
 .terms:hover{
     color: #2563eb;
 }
-/* ==========================
-TABLETS (1024px and below)
-========================== */
-@media (max-width:1024px){
 
+/* =========================
+   RESPONSIVE FIX (MOBILE)
+========================= */
+
+@media (max-width: 1024px) {
     .hero,
     .index-hero,
     .services,
     .process,
     .about,
     .projects,
-    footer{
-        padding:60px 40px;
+    footer {
+        padding: 60px 40px;
     }
 
-    .hero-content,
-    .about-container,
-    .tracker-hero,
-    #contact,
-    #steps-pay{
-        flex-direction:column;
-        text-align:center;
+    .hero-text h1 {
+        font-size: 55px;
     }
 
-    .hero-text{
-        max-width:100%;
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .hero-text h1{
-        font-size:60px;
+    .hero-image img {
+        width: 100%;
     }
 
-    .hero-image img,
-    .about-image img{
-        width:100%;
+    .nav-links {
+        gap: 15px;
+        margin-right: 20px;
+        flex-wrap: wrap;
     }
 
-    .project-grid{
-        grid-template-columns:repeat(2,1fr);
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    #package{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .process-grid{
-        flex-wrap:wrap;
-        gap:50px;
-    }
-
-    .process-grid::before{
-        display:none;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .details-grid,
-    .cal-grid{
-        grid-template-columns:1fr;
-    }
-
-    .info-grid{
-        grid-template-columns:1fr;
+    .tracker-box {
+        width: 100%;
     }
 }
 
-
-/* ==========================
-PHONES (768px and below)
-========================== */
-@media (max-width:768px){
-
-    .navbar{
-        flex-direction:column;
-        gap:20px;
+@media (max-width: 768px) {
+    .hero,
+    .index-hero,
+    .services,
+    .process,
+    .about,
+    .projects,
+    footer {
+        padding: 40px 20px;
     }
 
-    .nav-links{
-        flex-direction:column;
-        margin:0;
-        gap:15px;
-        text-align:center;
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .hero-text h1{
-        font-size:42px;
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;
     }
 
-    .hero-text p{
-        font-size:18px;
+    .hero-text h1 {
+        font-size: 40px;
     }
 
-    .hero-buttons{
-        flex-direction:column;
+    .hero-text p {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-grid {
+        gap: 30px;
+    }
+
+    .process-grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .process-grid::before {
+        display: none;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tracker-hero {
+        flex-direction: column;
+    }
+
+    .tracker-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
     }
 
     .btn1,
-    .btn2{
+    .btn2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+    .cta-left h2 {
+        font-size: 28px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+
+    .circle-progress {
+        width: 110px;
+        height: 110px;
+    }
+
+    .circle-inner {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+/* ==========================
+START YOUR JOURNEY RESPONSIVE
+========================== */
+
+/* Tablets */
+@media (max-width:1024px){
+
+    #contact{
+        flex-direction:column;
+        gap:60px;
+        padding:60px 30px;
+    }
+
+    .cta1{
         width:100%;
-        text-align:center;
+        max-width:800px;
     }
 
-    .section-title,
-    .process-title,
-    .faq-title h3,
-    .about-text h2{
-        font-size:36px;
+    .steps-work{
+        padding:0;
     }
 
-    .project-grid{
-        grid-template-columns:1fr;
-    }
-
-    #package{
-        grid-template-columns:1fr;
-    }
-
-    .project-card{
-        width:100%;
-    }
-
-    .footer-grid,
-    .grid-questions{
-        flex-direction:column;
-        gap:40px;
-    }
-
-    .order-number-box{
-        flex-direction:column;
-        gap:20px;
-        text-align:center;
-    }
-
-    .email-box{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .track-form{
-        flex-direction:column;
-    }
-
-    .stages,
-    .nums,
-    .plans{
-        gap:20px;
-        flex-wrap:wrap;
+    .steps-text span::before{
+        display:none;
     }
 
 }
 
+/* Phones */
+@media (max-width:768px){
 
-/* ==========================
-SMALL PHONES (480px and below)
-========================== */
-@media (max-width:480px){
-
-    .hero,
-    .index-hero,
-    .services,
-    .process,
-    .about,
-    .projects,
-    footer{
+    .journey-hero{
+        text-align:center;
         padding:40px 20px;
     }
 
-    .logo h1{
-        font-size:28px;
-    }
-
-    .logo img{
-        width:70px;
-    }
-
-    .hero-text h1{
-        font-size:34px;
-    }
-
-    .hero-text p{
-        font-size:16px;
-    }
-
-    .payment-hero span{
-        font-size:28px;
-    }
-
-    .journey-hero h3,
-    .success-hero h1,
-    .hero-left h1{
+    .journey-hero h3{
         font-size:2.5rem;
     }
 
-    .thank-you{
-        font-size:36px;
+    .journey-hero p{
+        font-size:1rem;
+    }
+
+    #contact{
+        flex-direction:column;
+        gap:50px;
+        padding:40px 20px;
+    }
+
+    .cta1{
+        width:100%;
+        padding:30px 20px;
+    }
+
+    .contact-form{
+        width:100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button{
+        width:100%;
+    }
+
+    .steps-grid{
+        width:100%;
+    }
+
+    .steps-work{
+        padding:0;
+        text-align:center;
+    }
+
+    .steps-work h1{
+        top:0;
+        font-size:2rem;
+    }
+
+    .steps-card{
+        flex-direction:column;
+        text-align:center;
+        align-items:center;
+        gap:15px;
+        margin-top:40px;
+    }
+
+    .steps-icon{
+        margin-bottom:0;
+    }
+
+    .steps-text{
+        font-size:1rem;
+    }
+
+    .steps-text h3{
+        font-size:1.3rem;
+    }
+
+    .steps-text p br{
+        display:none;
+    }
+
+    .steps-text span::before{
+        display:none;
+    }
+
+    .quote-btn{
+        display:inline-block;
+        margin-top:15px;
+    }
+
+}
+
+/* Small phones */
+@media (max-width:480px){
+
+    .journey-hero h3{
+        font-size:2rem;
+    }
+
+    .steps-work h1{
+        font-size:1.7rem;
+    }
+
+    .steps-text h3{
+        font-size:1.1rem;
+    }
+
+    .steps-text{
+        font-size:.95rem;
+    }
+
+    .cta1{
+        padding:25px 15px;
     }
 
 }
