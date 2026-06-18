@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const res = await fetch(
-                `${SUPABASE_URL}/rest/v1/projects?order_id=eq.${orderId}&email=eq.${email}`,
+                `${SUPABASE_URL}/rest/v1/orders?order_id=eq.${orderId}&client_email=eq.${email}`,
                 {
                     headers: {
                         apikey: SUPABASE_KEY,
@@ -48,26 +48,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const project = data[0];
+            const order = data[0];
 
-            const remainingBalance =
-                Number(project.total_price || 0) -
-                Number(project.deposit_paid || 0);
+            // FIXED BALANCE LOGIC
+            const total = Number(order.total_price || 0);
+            const deposit = Number(order.deposit_paid || 0);
+            const remainingBalance = total - deposit;
 
             document.getElementById("foundOrderNumber").textContent =
-                project.order_id || "";
+                order.order_id || "";
 
             document.getElementById("foundBusinessName").textContent =
-                project.business_name || "";
+                order.business_name || "";
 
             document.getElementById("foundPackage").textContent =
-                project.package || "";
+                order.web_package || "";
 
             document.getElementById("foundTotalPrice").textContent =
-                "$" + Number(project.total_price || 0).toFixed(2);
+                "$" + total.toFixed(2);
 
             document.getElementById("foundDepositPaid").textContent =
-                "$" + Number(project.deposit_paid || 0).toFixed(2);
+                "$" + deposit.toFixed(2);
 
             document.getElementById("foundBalance").textContent =
                 "$" + remainingBalance.toFixed(2);
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("payBalanceBtn");
 
             if (payButton) {
-                payButton.href = project.stripe_link || "#";
+                payButton.href = order.stripe_link || "#";
             }
 
             document.getElementById("orderFoundCard").style.display =
