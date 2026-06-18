@@ -553,7 +553,6 @@ footer{
     max-width: 1400px;
     margin: 0 auto;
     padding: 80px 20px;
-    background: linear-gradient(to right,#020617,#001845,#020617);
 }
 
 .glass {
@@ -1985,7 +1984,6 @@ justify-content: flex-start;
 /* =========================
    RESPONSIVE FIX (MOBILE)
 ========================= */
-
 @media (max-width: 1024px) {
     .hero,
     .index-hero,
@@ -2134,10 +2132,10 @@ justify-content: flex-start;
     }
 }
 
+
 /* ==========================
 START YOUR JOURNEY RESPONSIVE
 ========================== */
-
 /* Tablets */
 @media (max-width:1024px){
 
@@ -2159,8 +2157,8 @@ START YOUR JOURNEY RESPONSIVE
     .steps-text span::before{
         display:none;
     }
-
 }
+
 
 /* Phones */
 @media (max-width:768px){
@@ -2245,8 +2243,8 @@ START YOUR JOURNEY RESPONSIVE
         display:inline-block;
         margin-top:15px;
     }
-
 }
+
 
 /* Small phones */
 @media (max-width:480px){
@@ -2270,12 +2268,12 @@ START YOUR JOURNEY RESPONSIVE
     .cta1{
         padding:25px 15px;
     }
-
 }
+
+
 /* =========================
 TRACK PROGRESS RESPONSIVE
 ========================= */
-
 @media screen and (max-width: 1024px){
 
     .tracker-hero{
@@ -2297,9 +2295,7 @@ TRACK PROGRESS RESPONSIVE
     .details-grid{
         grid-template-columns:repeat(3,1fr);
     }
-
 }
-
 
 @media screen and (max-width:768px){
 
@@ -2379,7 +2375,6 @@ TRACK PROGRESS RESPONSIVE
         gap:40px;
         text-align:center;
     }
-
 }
 
 @media screen and (max-width:480px){
@@ -2406,8 +2401,9 @@ TRACK PROGRESS RESPONSIVE
     .plan{
         font-size:13px;
     }
-
 }
+
+
 /* =======================
 VIEW PACKAGE RESPONSIVE
 ======================= */
@@ -2422,13 +2418,9 @@ VIEW PACKAGE RESPONSIVE
         flex-direction:column;
         gap:50px;
     }
-
 }
 
-
 @media screen and (max-width:768px){
-
-   
 
     /* Payment Hero */
     .payment-hero{
@@ -2537,7 +2529,6 @@ VIEW PACKAGE RESPONSIVE
         text-align:center;
         gap:40px;
     }
-
 }
 
 
@@ -2573,12 +2564,12 @@ VIEW PACKAGE RESPONSIVE
         display:block;
         text-align:center;
     }
-
 }
+
+
 /* ==========================
 ABOUT PAGE RESPONSIVE
 ========================== */
-
 @media screen and (max-width:1024px){
 
     .about{
@@ -2599,9 +2590,7 @@ ABOUT PAGE RESPONSIVE
     .about-text{
         max-width:800px;
     }
-
 }
-
 
 @media screen and (max-width:768px){
 
@@ -2653,9 +2642,7 @@ ABOUT PAGE RESPONSIVE
         text-align:center;
         gap:40px;
     }
-
 }
-
 
 @media screen and (max-width:480px){
 
@@ -2680,12 +2667,12 @@ ABOUT PAGE RESPONSIVE
         text-align:center;
         padding:15px;
     }
-
 }
+
+
 /* ==========================
 GLOBAL RESPONSIVE FIXES
 ========================== */
-
 *{
     box-sizing:border-box;
 }
@@ -2695,22 +2682,20 @@ img{
     height:auto;
 }
 
+
 /* ==========================
 TABLETS
 ========================== */
 
-@media screen and (max-width:1024px){
+@media screen and (max-width:1024px){    
 
-    
 }
+
 
 /* ==========================
 PHONES
 ========================== */
-
 @media screen and (max-width:768px){
-
-  
 
     /* Hero sections */
     .tracker-hero,
@@ -2803,8 +2788,8 @@ PHONES
         text-align:center;
         gap:40px;
     }
-
 }
+
 
 /* ==========================
 SMALL PHONES
@@ -2827,5 +2812,4 @@ SMALL PHONES
     .plan{
         font-size:13px;
     }
-
 }
