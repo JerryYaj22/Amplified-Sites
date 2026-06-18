@@ -1,9 +1,7 @@
-/* =========================
-   SUPABASE CONFIG
-========================= */
 const SUPABASE_URL = "https://obnpotxehcktfdcseocz.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA"; // keep anon key on frontend ONLY
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ibnBvdHhlaGNrdGZkY3Nlb2N6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzNjU4NTQsImV4cCI6MjA5Njk0MTg1NH0.ewsB-9T3j1V2BlhaDai9OpIAbPWK6NDQpvPf5SRNFfA"; // frontend ONLY
 
+// IMPORTANT: ensure supabase.js is loaded in HTML before this file
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentOrderId = null;
@@ -17,12 +15,14 @@ function formatOrderId(orderId) {
 }
 
 /* =========================
-   FETCH ORDER FROM SUPABASE
+   FETCH ORDER
 ========================= */
 async function fetchOrder(orderId) {
     const cleaned = formatOrderId(orderId);
 
     try {
+        console.log("Searching for:", cleaned);
+
         const res = await fetch(
             `${SUPABASE_URL}/rest/v1/orders?order_id=eq.${cleaned}`,
             {
@@ -33,7 +33,12 @@ async function fetchOrder(orderId) {
             }
         );
 
+        console.log("Status:", res.status);
+
         const data = await res.json();
+
+        console.log("Supabase returned:", data);
+
         return data.length ? data[0] : null;
 
     } catch (err) {
@@ -58,7 +63,7 @@ function updateProgressCircle(progress) {
 }
 
 /* =========================
-   MAIN RENDER
+   RENDER ORDER
 ========================= */
 function renderOrder(order) {
     if (!order) return;
@@ -68,13 +73,17 @@ function renderOrder(order) {
 
     const progress = Number(order.progress) || 0;
 
-    document.getElementById("projectType").innerText = order.web_package || "Website Package";
-    document.getElementById("orderNumber").innerText = order.order_id || "";
-    document.getElementById("projectStatus").innerText = `● ${order.status || "In Progress"}`;
-    document.getElementById("progressPercent").innerText = `${progress}%`;
-    document.getElementById("currentStage").innerText = order.stage || "Discover";
+    const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value;
+    };
 
-    document.getElementById("completionDate").innerText = order.completion_date || "TBD";
+    setText("projectType", order.web_package || "Website Package");
+    setText("orderNumber", order.order_id || "");
+    setText("projectStatus", `● ${order.status || "In Progress"}`);
+    setText("progressPercent", `${progress}%`);
+    setText("currentStage", order.stage || "Discover");
+    setText("completionDate", order.completion_date || "TBD");
 
     updateProgressCircle(progress);
 }
