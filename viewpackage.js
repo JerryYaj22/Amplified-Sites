@@ -40,21 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Order Search:", data);
 
             if (!data.length) {
-
                 document.getElementById("orderFoundCard").style.display = "none";
-
                 alert("Order not found.");
-
                 return;
             }
 
             const order = data[0];
 
-            // FIXED BALANCE LOGIC
+            // ================= FIXED LOGIC =================
             const total = Number(order.total_price || 0);
-            const deposit = Number(order.deposit_paid || 0);
-            const remainingBalance = total - deposit;
+            const depositPaid = order.deposit_paid ? true : false;
 
+            // Example: if deposit is 50%, adjust this later if needed
+            const depositAmount = depositPaid ? total * 0.5 : 0;
+
+            const remainingBalance = total - depositAmount;
+
+            // ================= DISPLAY =================
             document.getElementById("foundOrderNumber").textContent =
                 order.order_id || "";
 
@@ -68,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "$" + total.toFixed(2);
 
             document.getElementById("foundDepositPaid").textContent =
-                "$" + deposit.toFixed(2);
+                depositPaid ? "Paid" : "Not Paid";
 
             document.getElementById("foundBalance").textContent =
                 "$" + remainingBalance.toFixed(2);
@@ -84,11 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "block";
 
         } catch (error) {
-
             console.error(error);
-
             alert("Something went wrong. Please try again.");
-
         }
 
     });
