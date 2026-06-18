@@ -33,8 +33,6 @@ async function fetchOrder(orderId) {
             }
         );
 
-        console.log("Status:", res.status);
-
         const data = await res.json();
 
         console.log("Supabase returned:", data);
@@ -63,6 +61,38 @@ function updateProgressCircle(progress) {
 }
 
 /* =========================
+   STAGE HIGHLIGHTING (NEW)
+========================= */
+function renderStages(stage) {
+
+    const stages = [
+        "Discover",
+        "Design",
+        "Development",
+        "Testing",
+        "Complete"
+    ];
+
+    const currentIndex = stages.indexOf(stage);
+
+    document.querySelectorAll(".stage").forEach((el, i) => {
+
+        el.classList.remove("active", "current");
+
+        if (currentIndex === -1) return;
+
+        if (i < currentIndex) {
+            el.classList.add("active");
+        }
+
+        if (i === currentIndex) {
+            el.classList.add("current");
+        }
+
+    });
+}
+
+/* =========================
    RENDER ORDER
 ========================= */
 function renderOrder(order) {
@@ -86,6 +116,9 @@ function renderOrder(order) {
     setText("completionDate", order.completion_date || "TBD");
 
     updateProgressCircle(progress);
+
+    // 🔥 THIS IS WHAT ACTIVATES YOUR STAGES
+    renderStages(order.stage || "Discover");
 }
 
 /* =========================
@@ -127,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // AUTO LOAD FROM URL (?order=XXXX)
     const params = new URLSearchParams(window.location.search);
     const order = params.get("order");
 
