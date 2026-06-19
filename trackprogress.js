@@ -65,11 +65,12 @@ function updateProgressCircle(progress) {
 ========================= */
 function renderStages(stage) {
 
-    const stages = [
-        "Discover",
+   const stages = [
+        "planning",
         "Design",
         "Development",
         "Testing",
+        "Revisions",
         "Complete"
     ];
 
