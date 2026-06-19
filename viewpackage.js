@@ -25,8 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
 
+            // ================= ONLY SEARCH BY ORDER ID =================
             const res = await fetch(
-                `${SUPABASE_URL}/rest/v1/orders?order_id=eq.${orderId}&client_email=eq.${email}`,
+                `${SUPABASE_URL}/rest/v1/orders?order_id=eq.${orderId}`,
                 {
                     headers: {
                         apikey: SUPABASE_KEY,
@@ -47,12 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const order = data[0];
 
-            // ================= FIXED LOGIC =================
-            const total = Number(order.total_price || 0);
-            const depositPaid = order.deposit_paid ? true : false;
+            // ================= EMAIL CHECK (SECURITY) =================
+            if (
+                order.client_email &&
+                order.client_email.toLowerCase().trim() !== email
+            ) {
+                alert("Email does not match this order.");
+                return;
+            }
 
-            // Example: if deposit is 50%, adjust this later if needed
-            const depositAmount = depositPaid ? total * 0.5 : 0;
+            // ================= CALCULATIONS =================
+            const total = Number(order.total_price || 0);
+            const depositPaid = Boolean(order.deposit_paid);
+
+            // FIX: assume deposit is already part of total tracking (no fake 50%)
+            const depositAmount = depositPaid ? Number(order.deposit_amount || 0) : 0;
 
             const remainingBalance = total - depositAmount;
 
