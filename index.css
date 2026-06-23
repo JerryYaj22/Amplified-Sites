@@ -797,9 +797,6 @@ justify-content: flex-start;
     border-radius: 20px;
 }
 
-a.package{
-     text-decoration: line-through;
-}
 .package-select h1{
     padding-top:10px ;
     font-size: 15px;
