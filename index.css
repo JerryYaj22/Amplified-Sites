@@ -797,7 +797,7 @@ justify-content: flex-start;
     border-radius: 20px;
 }
 
-.package{
+a.package{
      text-decoration: line-through;
 }
 .package-select h1{
