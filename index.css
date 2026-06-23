@@ -797,8 +797,8 @@ justify-content: flex-start;
     border-radius: 20px;
 }
 
-.package-select{
-    
+.package{
+     text-decoration: line-through;
 }
 .package-select h1{
     padding-top:10px ;
