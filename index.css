@@ -905,7 +905,8 @@ justify-content: flex-start;
 }
 
 .package{
-    text-decoration: line-through:#2563eb;
+    text-decoration: line-through:
+    text-decoration-color: #2563eb;
     background: #2563eb;
     color: white;
     padding: 8px 55px;
