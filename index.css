@@ -614,6 +614,11 @@ footer{
     flex: 2;
 }
 
+.contact-form h3{
+    font-size: 30px;
+    text-align: center;
+}
+
 /* Inputs */
 .contact-form p .contactinfo{
 justify-content: flex-start;
@@ -750,7 +755,7 @@ justify-content: flex-start;
 }
 /* END OF START JOURNEY PAGE */
 
-/* VIEW PACKAGE PAGE HEADER*/
+/* START OF VIEW PACKAGE PAGE */
 .payment-body{
     justify-content: center;
     margin: auto;  
@@ -797,6 +802,9 @@ justify-content: flex-start;
     border-radius: 20px;
 }
 
+.package-select{
+    
+}
 .package-select h1{
     padding-top:10px ;
     font-size: 15px;
@@ -905,7 +913,7 @@ justify-content: flex-start;
 }
 
 .package{
-    text-decoration: line-through:
+    text-decoration: line-through;
     background: #2563eb;
     color: white;
     padding: 8px 55px;
@@ -1289,6 +1297,272 @@ justify-content: flex-start;
     line-height: 1.7;
 }
 /* END OF VIEW PACKAGE PAGE */
+
+/* START OF CLIENT INFO PAGE */
+.client-info{
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    line-height: 1.5;
+    background:linear-gradient(to right,#020617,#001845,#020617);
+}
+
+/* MAIN CTA*/
+#customers{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.info1 {
+    max-width: ;
+    width: fit-content;
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(100, 7, 7, 0.35);
+    text-align: left;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    box-shadow: 0 0 10px #2563eb;
+    border-radius: 20px;
+}
+
+.info1 h3{
+    color: white;
+}
+
+.info1 p{
+    font-weight: 600;
+}
+
+.sec-inform{
+    color: white;
+}
+
+/* Form */
+.inform-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+    line-height: 2.5;
+    flex: 2;
+}
+
+.inform-form h3{
+   font-size: 18px;
+   text-align: center;
+   line-height: 1.3;
+}
+
+/* Inputs */
+.inform-form p .contactinfo{
+justify-content: flex-start;
+}
+
+.inform-form input,
+.inform-form textarea {
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 10px;
+    color: black;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.inform-form input::placeholder,
+.inform-form textarea::placeholder {
+     color: #6b7280;
+}
+
+.inform-form input:focus,
+.inform-form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 15px rgba(212, 13, 13, 0.3);
+}
+
+/* Textarea */
+.inform-form textarea {
+    resize: vertical;
+    min-height: 180px;
+}
+
+/* Button */
+.inform-form button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.inform-form button:hover {
+    transform: translateY(-2px);
+}
+/* END OF START CLIENT INFO PAGE */
+
+/* REVIEW ORDER PAGE */
+/* REVIEW PAGE */
+.review-page{
+    background:linear-gradient(to right,#020617,#001845,#020617);
+    min-height:100vh;
+    padding:80px 20px;
+}
+
+.review-header{
+    text-align:center;
+    color:white;
+    margin-bottom:50px;
+}
+
+.review-header h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.review-header p{
+    color:#cbd5e1;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.review-layout{
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.review-details{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.review-box{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+}
+
+.review-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.review-top a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.package-summary{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.package-summary h3{
+    font-size:1.5rem;
+}
+
+.package-summary span{
+    font-size:2rem;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.package-features{
+    list-style:none;
+}
+
+.package-features li{
+    padding:10px 0;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.client-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.client-grid label{
+    color:#6b7280;
+    display:block;
+    margin-bottom:8px;
+    font-size:.9rem;
+}
+
+.client-grid p{
+    font-weight:700;
+}
+
+.checkout-sidebar{
+    position:sticky;
+    top:20px;
+    height:fit-content;
+}
+
+.order-summary-card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+}
+
+.order-summary-card h2{
+    margin-bottom:25px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.total-row{
+    border-top:1px solid #e5e7eb;
+    padding-top:20px;
+    margin-top:20px;
+}
+
+.continue-payment{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:25px;
+}
+
+.secure-note{
+    text-align:center;
+    margin-top:15px;
+    color:#6b7280;
+}
+/* END OF REVIEW ORDER PAGE */
 
 /* FAQ PAGE */
 .faq-page{
@@ -2809,4 +3083,16 @@ SMALL PHONES
     .plan{
         font-size:13px;
     }
+}
+
+@media(max-width:900px){
+
+    .review-layout{
+        grid-template-columns:1fr;
+    }
+
+    .client-grid{
+        grid-template-columns:1fr;
+    }
+
 }
