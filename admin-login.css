@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    background:linear-gradient(to right,#020617,#02325f,#020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.amp-login{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;  
+    align-items: center;       
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 3s ease forwards;
+}
+@keyframes fadeIn {
+    to {
+        opacity:1;
+        transform: translateY(0);  
+    }  
+}
+
+.amp-image img{
+    max-width: 500px;
+    height: auto;
+}
+
+.login-container {
+    background: rgba(8, 8, 8, 0.459);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    font-weight: 500;
+}
+
+h2 {
+    color: #469494;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    background: #0b1220ad;
+    color: white;
+    outline: none;
+    font-weight: 600;
+}
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #1b6785;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+ button:hover {
+    background: #2564eb2f;
+    box-shadow: 0 0 10px #2563eb2f;
+}
+
+.note {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.error {
+    color: #ef4444;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+}
+
+.amp-image{
+    perspective:1200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.amp-image img{
+    width:350px;
+    transform-style:preserve-3d;
+    animation: rotate3D 8s linear infinite;
+    backface-visibility: visible;
+}
+
+@keyframes rotate3D{
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+        height: auto;
+        padding: 40px 15px;
+    }
+
+    .amp-login {
+        flex-direction: column;
+    }
+
+    .amp-image {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .amp-image img {
+        width: 220px;
+        height: auto;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 420px;
+    }
+}
