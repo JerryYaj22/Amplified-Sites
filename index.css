@@ -1209,10 +1209,19 @@ img{
         width:100%;
     }
 
-    .as-feature-card,
+   .as-feature-card,
     .card{
-        padding:28px;
-    }
+    padding:28px;
+    padding-right:75px;
+}
+
+.as-feature-card .arrow{
+    top:20px;
+    right:20px;
+    width:40px;
+    height:40px;
+    font-size:18px;
+}
 
     .as-process-line{
         grid-template-columns:1fr;
@@ -1270,6 +1279,14 @@ img{
     .card,
     .as-feature-card{
         padding:22px;
+        padding-right:65px;
+    }
+    .as-feature-card .arrow{
+    top:18px;
+    right:18px;
+    width:36px;
+    height:36px;
+    font-size:16px;
     }
 
     .as-main-title,
