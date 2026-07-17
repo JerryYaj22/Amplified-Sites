@@ -76,7 +76,7 @@ class Streak {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
     this.length = 120 + Math.random() * 250;
-    this.speed = 3 + Math.random() * 15;
+    this.speed = 1 + Math.random() * 1;
     this.width = 1 + Math.random() * 3;
     this.angle = Math.random() * Math.PI * 2;
     this.wave = Math.random() * 6;
@@ -255,7 +255,7 @@ function init() {
 
 for (let i = 0; i < 100; i++) stars.push(new Star());
 for (let i = 0; i < 2; i++) beams.push(new LightBeam());
-for (let i = 0; i < 60; i++) streaks.push(new Streak());
+for (let i = 0; i < 30; i++) streaks.push(new Streak());
 for (let i = 0; i < 80; i++) particles.push(new Particle());
 for (let i = 0; i < 4; i++) ribbons.push(new Ribbon());
 }
