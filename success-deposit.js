@@ -32,7 +32,26 @@ if (!result.order) {
 }
 
 const data = result.order;
-
+// 3. SEND CUSTOMER CONFIRMATION EMAIL
+console.log("EMAIL GOING TO:", data.client_email);
+emailjs.send(
+    "service_lqvhehg",
+    "template_z6dzxcr",
+    {
+        client_name: data.name,
+        email: data.client_email,
+        order_id: data.order_id,
+        package: data.web_package,
+        deposit: data.deposit_amount,
+        status: data.stage
+    }
+)
+.then(() => {
+    console.log("Customer confirmation email sent");
+})
+.catch((error) => {
+    console.error("EmailJS Error:", error);
+});
     // 3. POPULATE UI
 
     // Order number
