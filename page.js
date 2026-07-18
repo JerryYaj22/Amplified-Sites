@@ -288,26 +288,83 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-
 animate();
 
 // Privacy Policy / Terms Accordion
-
 const termHeaders = document.querySelectorAll(".term-header");
-
 termHeaders.forEach(header => {
     header.addEventListener("click", () => {
         const item = header.parentElement;
-
         // Close all others
         document.querySelectorAll(".term-item").forEach(el => {
             if (el !== item) {
                 el.classList.remove("active");
             }
         });
-
         // Toggle clicked one
         item.classList.toggle("active");
     });
 });
-  
+// Initialize EmailJS
+emailjs.init({
+    publicKey: "QaV193SqiHUiRX3cj"
+});
+
+// Start Your Journey Form
+const journeyForm = document.getElementById("journeyForm");
+if (journeyForm) {
+    journeyForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const templateParams = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            business: document.getElementById("business").value,
+            message: document.getElementById("message").value
+        };
+        emailjs.send(
+            "service_lqvhehg",
+            "template_lhadv91",
+            templateParams
+        )
+        .then(function() {
+            console.log("Email sent successfully!");
+            window.location.href = "thankyoupage.html";
+        })
+        .catch(function(error) {
+            console.error("EmailJS Error:", error);
+            alert(
+                "There was a problem submitting your project. Please try again."
+            );
+        });
+    });
+}
+
+const phoneInput = document.getElementById("phone");
+
+if (phoneInput) {
+    phoneInput.addEventListener("input", function () {
+
+        // Remove everything except numbers
+        let numbers = this.value.replace(/\D/g, "");
+
+        // Limit to 10 digits
+        numbers = numbers.substring(0, 10);
+
+        // Add dashes automatically
+        if (numbers.length > 6) {
+            this.value = numbers.replace(
+                /(\d{3})(\d{3})(\d{1,4})/,
+                "$1-$2-$3"
+            );
+        } else if (numbers.length > 3) {
+            this.value = numbers.replace(
+                /(\d{3})(\d+)/,
+                "$1-$2"
+            );
+        } else {
+            this.value = numbers;
+        }
+
+    });
+}
