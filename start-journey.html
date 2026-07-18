@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amplified Sites</title>
-  <link rel="icon" type="image/png" href="ampsiteslogo.png">
-  <link rel="stylesheet" href="index.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <script defer src="page.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amplified Sites</title>
+    <link rel="icon" type="image/png" href="ampsiteslogo.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script defer src="page.js"></script>
 </head>
 <body>
     <section class="start-your-journey">
@@ -36,22 +37,45 @@
             <h3><span>Start</span> Your Journey</h3>
             <p>Tell me about your project and I'll create a custom website concept</p>
             <p> tailored to your business.</p>
-        <div id="contact">
-            <div class="cta1">
-                <form class="contact-form" action="https://formsubmit.co/Amplifiedsites@Outlook.com" method="POST">
-                    <h3>Tell Us About Your Vision</h3>
-                    <input type="hidden" name="_next" value="https://amplifiedsites.com/thankyoupage.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_autoresponse" value="Thank you for contacting Amplified Sites. We received your project details and will get back to you within 24 hours.">
-                    <p><span class="contactinfo">Full Name</span><input type="text" name="name" placeholder="John Doe"required></p>
-                    <p><span class="contactinfo">Email</span><input type="email" name="email" placeholder="you@example.com"required></p>
-                    <p><span class="contactinfo">Phone Number (Optional)</span><input name="Phone" type="text" placeholder="Phone*"></p>
-                    <p><span class="contactinfo">Business Name (Optional)</span><input name="business" type="text" placeholder="Your Business Name"></p>
-                    <p><span class="contactinfo">Tell me about your project</span><textarea name="message"placeholder="Describe your business, goals, and what you're looking for in your website... " rows="10" required></textarea></p>
-                    <p><button class="btn-primary" type="submit"><i class="fa-regular fa-paper-plane"></i> Submit Project Details</button></p>
-                    <p class="information">🔒 Your information is secure and will never be shared.</p>
-                </form>
+            <div id="contact">
+                <div class="cta1">
+                    <form class="contact-form" id="journeyForm">
+                        <h3>Tell Us About Your Vision</h3>
+                        <p>
+                            <span class="contactinfo">Full Name</span>
+                            <input id="name" type="text" name="name" placeholder="John Doe" required>
+                        </p>
+                        <p>
+                            <span class="contactinfo">Email</span>
+                            <input id="email" type="email" name="email" placeholder="you@example.com" required>
+                        </p>
+                        <p>
+                            <span class="contactinfo">Phone Number (Optional)</span>
+                            <input id="phone" name="phone" type="tel" placeholder="Phone*" maxlength="12">
+                        </p>
+                        <p>
+                            <span class="contactinfo">Business Name (Optional)</span>
+                            <input id="business" name="business" type="text" placeholder="Your Business Name">
+                        </p>
+                        <p>
+                            <span class="contactinfo">Tell me about your project</span>
+                            <textarea 
+                                id="message" 
+                                name="message"
+                                placeholder="Describe your business, goals, and what you're looking for in your website..."
+                                rows="10"
+                                required></textarea>
+                        </p>
+                        <p>
+                            <button class="btn-primary" type="submit">
+                                <i class="fa-regular fa-paper-plane"></i>
+                                Submit Project Details
+                            </button>
+                        </p>
+                        <p class="information">
+                            🔒 Your information is secure and will never be shared.
+                        </p>
+                    </form>
             </div>
             <div class="steps-grid">
                 <div class="steps-card">
