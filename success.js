@@ -1,5 +1,8 @@
 // Console log (debugging check)
 console.log("SUCCESS JS LOADED");
+emailjs.init({
+    publicKey: "QaV193SqiHUiRX3cj"
+});
 // ================= DOM CONTENT LOADED (PAGE INITIALIZATION) =================
 document.addEventListener("DOMContentLoaded", async () => {
 // ================= SUPABASE KEYS =================
@@ -29,6 +32,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
     const data = result.order;
+    // Send confirmation email
+    console.log("EMAIL GOING TO:", data.client_email);   
+        emailjs.send(
+            "service_lqvhehg",
+            "template_z6dzxcr",
+    {
+        client_name: data.name,
+        email: data.client_email,
+        order_id: data.order_id,
+        package: data.web_package,
+        deposit: data.deposit_amount,
+        status: data.stage
+    }
+)
+.then(() => {
+    console.log("Confirmation email sent.");
+})
+.catch((error) => {
+    console.error("EmailJS Error:", error);
+});
     console.log("SESSION ID:", sessionId);
     console.log("DATA:", data);
     // ================= DISPLAY ORDER DATA (UI RENDERING) =================
@@ -42,13 +65,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             `<strong>${data.stage}</strong>`;
         document.getElementById("trackBtn").href =
             `trackprogress.html?order=${data.order_id}`;
-    setInterval(async () => {
-    const res = await fetch(
-    `http://localhost:3000/get-order-by-session?session_id=${sessionId}`
-    );
-    const { order } = await res.json();
-    document.getElementById("projectStatus").textContent = order.stage;
-    }, 3000);
     // ================= COPY ORDER ID BUTTON FUNCTIONALITY =================
         const copyBtn =
             document.getElementById("copyBtn");
