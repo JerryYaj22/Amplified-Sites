@@ -1,7 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("clientForm");
-
+    const phoneInput = document.getElementById("phone");
+        if (phoneInput) {
+            phoneInput.addEventListener("input", function () {
+                // Remove anything that is not a number
+                let numbers = this.value.replace(/\D/g, "");
+                // Limit to 10 digits
+                numbers = numbers.substring(0, 10);
+                // Add dashes automatically
+                if (numbers.length > 6) {
+                    this.value = numbers.replace(
+                        /(\d{3})(\d{3})(\d{1,4})/,
+                        "$1-$2-$3"
+                    );
+                } else if (numbers.length > 3) {
+                    this.value = numbers.replace(
+                        /(\d{3})(\d+)/,
+                        "$1-$2"
+                    );
+                } else {
+                    this.value = numbers;
+                }
+            });
+}
     if (!form) return;
 
     form.addEventListener("submit", async (e) => {
@@ -45,3 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+        
