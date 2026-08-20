@@ -173,88 +173,8 @@ if (loginForm) {
 // FORGOT PASSWORD
 // =========================================
 
-const forgotPasswordForm =
-    document.getElementById("forgotPasswordForm");
+// Your existing forgot-password code here
 
-if (forgotPasswordForm) {
-
-    const forgotEmail =
-        document.getElementById("forgotEmail");
-
-    const resetBtn =
-        document.getElementById("resetBtn");
-
-    const successMessage =
-        document.getElementById("successMessage");
-
-    const forgotError =
-        document.getElementById("forgotError");
-
-
-    forgotPasswordForm.addEventListener("submit", async (e) => {
-
-        e.preventDefault();
-
-        const email =
-            forgotEmail.value.trim().toLowerCase();
-
-        successMessage.style.display = "none";
-        forgotError.style.display = "none";
-
-        resetBtn.disabled = true;
-        resetBtn.textContent = "Sending...";
-
-
-        try {
-
-            const { error } =
-                await client.auth.resetPasswordForEmail(email, {
-                    redirectTo:
-                        "https://amplifiedsites.com/admin-reset-password.html"
-                });
-
-
-            if (error) {
-
-                console.error("Supabase reset error:", error);
-
-                forgotError.textContent =
-                    error.message;
-
-                forgotError.style.display = "block";
-
-                resetBtn.disabled = false;
-                resetBtn.textContent = "Send Reset Link";
-
-                return;
-            }
-
-
-            successMessage.textContent =
-                "Reset link sent! Check your email.";
-
-            successMessage.style.display = "block";
-
-            resetBtn.disabled = false;
-            resetBtn.textContent = "Send Reset Link";
-
-
-        } catch (err) {
-
-            console.error("Password reset exception:", err);
-
-            forgotError.textContent =
-                "Unable to send reset link.";
-
-            forgotError.style.display = "block";
-
-            resetBtn.disabled = false;
-            resetBtn.textContent = "Send Reset Link";
-        }
-
-    });
-
-}
 
 // =========================================
 // RESET PASSWORD
@@ -287,20 +207,16 @@ if (resetPasswordForm) {
 
             e.preventDefault();
 
-
             const password =
                 newPassword.value;
 
             const confirm =
                 confirmPassword.value;
 
-
-            // Hide previous messages
             resetSuccess.style.display = "none";
             resetError.style.display = "none";
 
 
-            // Check password length
             if (password.length < 8) {
 
                 resetError.textContent =
@@ -312,7 +228,6 @@ if (resetPasswordForm) {
             }
 
 
-            // Check passwords match
             if (password !== confirm) {
 
                 resetError.textContent =
@@ -324,7 +239,6 @@ if (resetPasswordForm) {
             }
 
 
-            // Loading state
             updatePasswordBtn.disabled = true;
             updatePasswordBtn.textContent =
                 "Updating...";
@@ -348,8 +262,7 @@ if (resetPasswordForm) {
                     resetError.textContent =
                         "Unable to update password. Please try again.";
 
-                    resetError.style.display =
-                        "block";
+                    resetError.style.display = "block";
 
                     updatePasswordBtn.disabled = false;
                     updatePasswordBtn.textContent =
@@ -359,7 +272,6 @@ if (resetPasswordForm) {
                 }
 
 
-                // Success
                 resetSuccess.textContent =
                     "Password updated successfully!";
 
@@ -375,18 +287,15 @@ if (resetPasswordForm) {
                     "Password Updated";
 
 
-                // Sign user out after password change
                 await client.auth.signOut();
 
 
-                // Return to login page
                 setTimeout(() => {
 
                     window.location.href =
                         "admin-login.html";
 
                 }, 2000);
-
 
             } catch (err) {
 
@@ -405,6 +314,11 @@ if (resetPasswordForm) {
                 updatePasswordBtn.textContent =
                     "Update Password";
             }
+
+        }
+    );
+
+}
 
         }
     );
