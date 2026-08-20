@@ -170,13 +170,6 @@ if (loginForm) {
 
 
 // =========================================
-// FORGOT PASSWORD
-// =========================================
-
-// Your existing forgot-password code here
-
-
-// =========================================
 // RESET PASSWORD
 // =========================================
 
@@ -207,16 +200,20 @@ if (resetPasswordForm) {
 
             e.preventDefault();
 
+
             const password =
                 newPassword.value;
 
             const confirm =
                 confirmPassword.value;
 
+
+            // Hide previous messages
             resetSuccess.style.display = "none";
             resetError.style.display = "none";
 
 
+            // Check password length
             if (password.length < 8) {
 
                 resetError.textContent =
@@ -228,6 +225,7 @@ if (resetPasswordForm) {
             }
 
 
+            // Check passwords match
             if (password !== confirm) {
 
                 resetError.textContent =
@@ -239,6 +237,7 @@ if (resetPasswordForm) {
             }
 
 
+            // Loading state
             updatePasswordBtn.disabled = true;
             updatePasswordBtn.textContent =
                 "Updating...";
@@ -262,7 +261,8 @@ if (resetPasswordForm) {
                     resetError.textContent =
                         "Unable to update password. Please try again.";
 
-                    resetError.style.display = "block";
+                    resetError.style.display =
+                        "block";
 
                     updatePasswordBtn.disabled = false;
                     updatePasswordBtn.textContent =
@@ -272,6 +272,7 @@ if (resetPasswordForm) {
                 }
 
 
+                // Success
                 resetSuccess.textContent =
                     "Password updated successfully!";
 
@@ -287,15 +288,18 @@ if (resetPasswordForm) {
                     "Password Updated";
 
 
+                // Sign user out after password change
                 await client.auth.signOut();
 
 
+                // Return to login page
                 setTimeout(() => {
 
                     window.location.href =
                         "admin-login.html";
 
                 }, 2000);
+
 
             } catch (err) {
 
@@ -314,11 +318,6 @@ if (resetPasswordForm) {
                 updatePasswordBtn.textContent =
                     "Update Password";
             }
-
-        }
-    );
-
-}
 
         }
     );
