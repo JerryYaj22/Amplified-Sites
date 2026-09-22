@@ -310,11 +310,24 @@ emailjs.init({
     publicKey: "QaV193SqiHUiRX3cj"
 });
 
-// Start Your Journey Form
 const journeyForm = document.getElementById("journeyForm");
+
 if (journeyForm) {
-    journeyForm.addEventListener("submit", function(event) {
+    let isSubmitting = false;
+
+    journeyForm.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        if (isSubmitting) return;
+
+        isSubmitting = true;
+
+        const submitBtn = journeyForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+        }
+
         const templateParams = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
@@ -322,17 +335,26 @@ if (journeyForm) {
             business: document.getElementById("business").value,
             message: document.getElementById("message").value
         };
+
         emailjs.send(
             "service_lqvhehg",
             "template_lhadv91",
             templateParams
         )
-        .then(function() {
+        .then(function () {
             console.log("Email sent successfully!");
             window.location.href = "thankyoupage.html";
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.error("EmailJS Error:", error);
+
+            isSubmitting = false;
+
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Submit";
+            }
+
             alert(
                 "There was a problem submitting your project. Please try again."
             );
