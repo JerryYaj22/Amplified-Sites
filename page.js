@@ -310,6 +310,7 @@ emailjs.init({
     publicKey: "QaV193SqiHUiRX3cj"
 });
 
+// Start Your Journey Form
 const journeyForm = document.getElementById("journeyForm");
 
 if (journeyForm) {
